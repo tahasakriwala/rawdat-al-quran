@@ -28,7 +28,7 @@
 
 <section style="padding-bottom:clamp(72px,10vw,140px)">
   <div class="wrap">
-    <div class="filters" data-filter-group="#wall" style="margin-bottom:34px;position:sticky;top:calc(var(--hdr-h) + 8px);z-index:5;background:var(--paper);padding:10px 0">
+    <div class="filters class-filter sticky-follow" data-filter-group="#wall">
       <button class="chip on" data-filter="*">All</button>
       {% for slug, kids in groups.items() if slug != 'archive' %}<button class="chip" data-filter="{{ slug }}">{{ class_by_slug[slug].label }} <span class="ar" style="font-size:14px">{{ class_by_slug[slug].ar }}</span></button>{% endfor %}
       {% if groups.archive %}<button class="chip" data-filter="archive">Archive</button>{% endif %}

@@ -25,7 +25,7 @@
       <div class="prose" style="margin-top:24px" data-reveal>{% for p in msg %}<p>{{ p }}</p>{% endfor %}</div>
       <p data-reveal><b>{{ p.principal.name }}</b><br><span class="caps muted">Principal</span></p>
     </div>
-    <div style="position:sticky;top:calc(var(--hdr-h) + 30px)" data-reveal="scale"><div class="archw" style="max-width:380px;margin-left:auto"><div class="arch"><img src="{{ p.principal.photo|media }}" alt="{{ p.principal.name }}"></div></div></div>
+    <div class="sticky-follow" style="--gap:30px" data-reveal="scale"><div class="archw" style="max-width:380px;margin-left:auto"><div class="arch"><img src="{{ p.principal.photo|media }}" alt="{{ p.principal.name }}"></div></div></div>
   </div>
 </section>
 

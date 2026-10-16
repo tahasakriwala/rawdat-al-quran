@@ -24,6 +24,7 @@
     const heroEnd = $('.hero') ? $('.hero').offsetHeight - innerHeight * 1.05 : 20;
     hdr.classList.toggle('solid', y > heroEnd);
     hdr.classList.toggle('hide', y > lastY && y > 400 && !document.body.classList.contains('menu-open'));
+    html.classList.toggle('hdr-hidden', hdr.classList.contains('hide'));
     lastY = y;
     const h = document.documentElement.scrollHeight - innerHeight;
     bar.style.width = h > 0 ? (100 * y / h) + '%' : 0;
@@ -142,8 +143,8 @@
   // 1. Silsila stem — a golden vine grows down the page and flowers at each milestone (About, Admissions)
   $$('.stem').forEach(st => {
     const svg = $('.stem-svg', st), path = $('.stem-path', svg), ghost = $('.stem-ghost', svg), tip = $('.stem-tip', svg);
-    const leaves = $('.stem-leaves', svg), items = $$('.stem-item', st);
-    let H = 1, L = 1, nodesY = [];
+    const leaves = $('.stem-leaves', svg), items = $$('.stem-item', st), bloom = $('.stem-bloom', st);
+    let H = 1, L = 1, nodesY = [], endY = 1;
     path.setAttribute('pathLength', 1);
     st.__measure = () => {
       const W = st.clientWidth; H = st.offsetHeight;
@@ -151,9 +152,10 @@
       svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
       const top0 = st.getBoundingClientRect().top;
       nodesY = items.map(it => { const r = $('.stem-node', it).getBoundingClientRect(); return r.top + r.height / 2 - top0; });
+      endY = bloom ? bloom.getBoundingClientRect().top - top0 - 6 : H;  // the vine ends where the bloom begins
       let d = `M${cx} 0`, py = 0;
       nodesY.forEach((y, i) => { const sw = (i % 2 ? 1 : -1) * sway, dy = y - py; d += ` C${cx + sw} ${py + dy * .3} ${cx + sw} ${py + dy * .7} ${cx} ${y}`; py = y; });
-      d += ` C${cx} ${py + (H - py) * .4} ${cx} ${H - 10} ${cx} ${H}`;
+      d += ` C${cx} ${py + (endY - py) * .4} ${cx} ${endY - 10} ${cx} ${endY}`;
       path.setAttribute('d', d); ghost.setAttribute('d', d);
       L = path.getTotalLength() || 1;
       leaves.innerHTML = '';
@@ -172,15 +174,16 @@
     };
     st.__onP = (p, force) => {
       st.__p = p;
-      path.style.strokeDashoffset = (1 - p).toFixed(4);
-      const pt = path.getPointAtLength(L * p);
+      const f = clamp(p * H / endY);  // fraction of the vine grown: the tip tracks a line 62% down the viewport
+      path.style.strokeDashoffset = (1 - f).toFixed(4);
+      const pt = path.getPointAtLength(L * f);
       tip.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
-      tip.style.opacity = p > .002 && p < .998 ? 1 : 0;
+      tip.style.opacity = f > .002 && f < .995 ? 1 : 0;
       const tipY = pt.y;
       let last = -1;
       items.forEach((it, i) => { const on = tipY >= nodesY[i] - 6; it.classList.toggle('on', on); if (on) last = i; });
       (st.__leaves || []).forEach(l => l.classList.toggle('on', +l.dataset.i <= last));
-      st.classList.toggle('done', p > .985);
+      st.classList.toggle('done', f > .992);
     };
   });
 
