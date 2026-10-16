@@ -4,6 +4,20 @@
 {% block main %}
 {{ phero('Our people', 'The people who<br><b>nurture every child.</b>', 'أساتذتنا') }}
 
+{# ---- A halaqa: the coordinators seated in a teaching circle around the Principal ---- #}
+<section class="scrolly halaqa" aria-label="Leadership seated in a halaqa">
+  <div class="stage">
+    <div class="halaqa-head"><div class="kick center">A halaqa of teachers</div><h2 class="h2" style="margin-top:12px">Leadership, <b>seated in a circle.</b></h2></div>
+    <div class="halaqa-floor"></div>
+    <div class="halaqa-centre"><div class="archw"><div class="arch"><img src="{{ p.principal.photo|media }}" alt="{{ p.principal.name }}"></div></div><b>{{ p.principal.name }}</b><span>Principal</span></div>
+    <div class="seats">
+      {% for h in p.hods %}
+      <div class="seat"><div class="av">{% if h.photo %}<img src="{{ h.photo|media }}" alt="{{ h.name }}" loading="lazy">{% else %}{{ h.name|initials }}{% endif %}</div><b>{{ h.name }}</b>{% if h.role %}<span>{{ h.role }}</span>{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <section class="sec-tight">
   <div class="wrap split wide-left photo-first" style="align-items:start">
     <div>
@@ -12,14 +26,6 @@
       <p data-reveal><b>{{ p.principal.name }}</b><br><span class="caps muted">Principal</span></p>
     </div>
     <div style="position:sticky;top:calc(var(--hdr-h) + 30px)" data-reveal="scale"><div class="archw" style="max-width:380px;margin-left:auto"><div class="arch"><img src="{{ p.principal.photo|media }}" alt="{{ p.principal.name }}"></div></div></div>
-  </div>
-</section>
-
-<section class="sec sec-paper2">
-  <div class="wrap">
-    <div class="kick" data-reveal>Heads of department</div>
-    <h2 class="h2" style="margin:16px 0 36px" data-reveal>Leadership</h2>
-    <div class="grid g4">{% for h in p.hods %}<div data-reveal style="--d:{{ loop.index0 % 4 }}">{{ person(h) }}</div>{% endfor %}</div>
   </div>
 </section>
 

@@ -131,8 +131,184 @@
     addEventListener('scroll', () => { if (!sm.running) { sm.target = sm.cur = scrollY; } }, { passive: true });
   }
 
+  /* =====================================================================
+     SIGNATURE SCENES — each page has its own scroll motif. Every scene exposes
+     el.__measure() (layout, on resize) and el.__onP(p) (0→1 progress, eased by the engine).
+     ===================================================================== */
+  const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const easeOut = x => 1 - Math.pow(1 - x, 3);
+  const SVGNS = 'http://www.w3.org/2000/svg';
+
+  // 1. Silsila stem — a golden vine grows down the page and flowers at each milestone (About, Admissions)
+  $$('.stem').forEach(st => {
+    const svg = $('.stem-svg', st), path = $('.stem-path', svg), ghost = $('.stem-ghost', svg), tip = $('.stem-tip', svg);
+    const leaves = $('.stem-leaves', svg), items = $$('.stem-item', st);
+    let H = 1, L = 1, nodesY = [];
+    path.setAttribute('pathLength', 1);
+    st.__measure = () => {
+      const W = st.clientWidth; H = st.offsetHeight;
+      const mobile = W < 760, cx = mobile ? 22 : W / 2, sway = mobile ? 9 : +(st.dataset.sway || 54);
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      const top0 = st.getBoundingClientRect().top;
+      nodesY = items.map(it => { const r = $('.stem-node', it).getBoundingClientRect(); return r.top + r.height / 2 - top0; });
+      let d = `M${cx} 0`, py = 0;
+      nodesY.forEach((y, i) => { const sw = (i % 2 ? 1 : -1) * sway, dy = y - py; d += ` C${cx + sw} ${py + dy * .3} ${cx + sw} ${py + dy * .7} ${cx} ${y}`; py = y; });
+      d += ` C${cx} ${py + (H - py) * .4} ${cx} ${H - 10} ${cx} ${H}`;
+      path.setAttribute('d', d); ghost.setAttribute('d', d);
+      L = path.getTotalLength() || 1;
+      leaves.innerHTML = '';
+      nodesY.forEach((y, i) => {
+        [[-1, -34], [1, -18], [-1, 22]].forEach(([side, off], k) => {
+          if (mobile && side < 0) return;
+          const g = document.createElementNS(SVGNS, 'path');
+          const x0 = cx, y0 = y + off, dir = (i + k) % 2 ? 1 : -1, s = side * (mobile ? .7 : 1) * (k === 1 ? 1.15 : 1);
+          g.setAttribute('d', `M${x0} ${y0} q${18 * s} ${-14 * dir} ${36 * s} ${-4 * dir} q${-14 * s} ${14 * dir} ${-36 * s} ${4 * dir}z`);
+          g.setAttribute('class', 'stem-leaf'); g.dataset.i = i; g.style.transitionDelay = (k * 120) + 'ms';
+          leaves.appendChild(g);
+        });
+      });
+      st.__leaves = $$('.stem-leaf', leaves);
+      if (st.__p !== undefined) st.__onP(st.__p, true);
+    };
+    st.__onP = (p, force) => {
+      st.__p = p;
+      path.style.strokeDashoffset = (1 - p).toFixed(4);
+      const pt = path.getPointAtLength(L * p);
+      tip.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+      tip.style.opacity = p > .002 && p < .998 ? 1 : 0;
+      const tipY = pt.y;
+      let last = -1;
+      items.forEach((it, i) => { const on = tipY >= nodesY[i] - 6; it.classList.toggle('on', on); if (on) last = i; });
+      (st.__leaves || []).forEach(l => l.classList.toggle('on', +l.dataset.i <= last));
+      st.classList.toggle('done', p > .985);
+    };
+  });
+
+  // 2. R.E.L.A.X flower — five petals open one by one
+  $$('.flower-scene').forEach(fs => {
+    const petals = $$('.petal', fs), panels = $$('.flower-panel', fs), core = $('.flower-core', fs);
+    let cur = -1;
+    fs.__onP = p => {
+      petals.forEach((pt, i) => {
+        const k = easeOut(clamp(p * 6.2 - i * 1.05));
+        pt.style.setProperty('--s', (.15 + .85 * k).toFixed(3));
+        pt.style.setProperty('--o', k.toFixed(3));
+      });
+      const i = Math.min(4, Math.max(0, Math.floor(p * 6.2 / 1.05 - .35)));
+      if (i !== cur) { panels.forEach((pn, k) => pn.classList.toggle('on', k === i)); petals.forEach((pt, k) => pt.classList.toggle('on', k === i)); cur = i; }
+      core.style.setProperty('--r', (p * 72).toFixed(2) + 'deg');
+      fs.classList.toggle('bloom', p > .9);
+    };
+  });
+
+  // 3. Campus — walk through a sequence of keel-arch doorways
+  $$('.tunnel').forEach(tn => {
+    const doors = $$('.door', tn), caps = $$('.door-cap', tn), dots = $$('.door-dots i', tn);
+    const n = doors.length;
+    // decode every doorway photo up front so the zoom never waits on an image
+    doors.forEach(d => { const im = $('img', d); if (im && im.decode) im.decode().catch(() => {}); });
+    let cur = -1;
+    tn.__onP = p => {
+      const x = p * (n - 1);
+      doors.forEach((d, i) => {
+        const t = x - i;
+        let s, o;
+        if (t <= 0) { s = Math.pow(2.3, t); o = clamp((t + 1.7) / 1.1); }
+        else { s = Math.pow(5.5, t); o = clamp(1 - t * 1.9); }
+        d.style.transform = `translate(-50%, -50%) scale(${s.toFixed(4)})`;
+        d.style.opacity = o.toFixed(3);
+        d.style.visibility = o < .01 ? 'hidden' : 'visible';
+      });
+      const i = Math.round(x);
+      if (i !== cur) { caps.forEach((c, k) => c.classList.toggle('on', k === i)); dots.forEach((dt, k) => dt.classList.toggle('on', k <= i)); cur = i; }
+    };
+  });
+
+  // 4. People — a halaqa (teaching circle) slowly turning around the Principal
+  $$('.halaqa').forEach(hq => {
+    const seats = $$('.seat', hq), n = seats.length;
+    let R = 400, ry = .3;
+    hq.__measure = () => { const W = innerWidth, Hh = innerHeight; R = Math.min(W * (W < 760 ? .42 : .38), 560, Hh * .7); ry = W < 760 ? .5 : .3; };
+    hq.__onP = p => {
+      const spin = -90 + p * 110;
+      seats.forEach((st, i) => {
+        const a = (spin + i * 360 / n) * Math.PI / 180;
+        const x = Math.cos(a) * R, z = Math.sin(a), y = z * R * ry;
+        const appear = easeOut(clamp(p * 3.2 - i * .16));
+        const sc = (.66 + .34 * (z + 1) / 2) * (.6 + .4 * appear);
+        st.style.transform = `translate(${x.toFixed(1)}px, ${(y + (1 - appear) * 60).toFixed(1)}px) translate(-50%, -50%) scale(${sc.toFixed(3)})`;
+        st.style.opacity = (appear * (.45 + .55 * (z + 1) / 2)).toFixed(3);
+        st.style.zIndex = z > 0 ? 3 : 1;
+      });
+      hq.style.setProperty('--ring', clamp(p * 2.5).toFixed(3));
+    };
+  });
+
+  // 5. Students — the Ascent: twelve Arabic-named classes as steps toward the dome
+  $$('.ascent').forEach(as => {
+    const steps = $$('.step', as), panels = $$('.ascent-panel', as), mark = $('.ascent-mark', as), track = $('.steps', as);
+    let pts = [];
+    as.__measure = () => {
+      const tr = track.getBoundingClientRect();
+      pts = steps.map(s => { const r = s.getBoundingClientRect(); return [r.left - tr.left + r.width / 2, r.top - tr.top]; });
+      if (as.__p !== undefined) as.__onP(as.__p);
+    };
+    let cur = -1;
+    as.__onP = p => {
+      as.__p = p;
+      if (!pts.length) return;
+      const x = clamp(p * 1.08) * (pts.length - 1), i = Math.floor(x), f = x - i, j = Math.min(pts.length - 1, i + 1);
+      const fx = pts[i][0] + (pts[j][0] - pts[i][0]) * f;
+      const hop = Math.sin(f * Math.PI) * 26;
+      const fy = pts[i][1] + (pts[j][1] - pts[i][1]) * ease(f) - hop;
+      mark.style.transform = `translate(${fx.toFixed(1)}px, ${(fy - 18).toFixed(1)}px) translate(-50%, -50%)`;
+      const k = Math.round(x);
+      if (k !== cur) { steps.forEach((s, m) => { s.classList.toggle('on', m === k); s.classList.toggle('past', m < k); }); panels.forEach((pn, m) => pn.classList.toggle('on', m === k)); cur = k; }
+      as.classList.toggle('summit', p > .96);
+    };
+  });
+
+  // 6. Gallery — album covers fly in to form a keel-arch mosaic
+  $$('.mosaic').forEach(ms => {
+    const tiles = $$('.tile', ms), ring = $('.mosaic-ring', ms);
+    let plan = [];
+    const rnd = (i, k) => { const x = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return x - Math.floor(x); };
+    ms.__measure = () => {
+      const W = innerWidth, H = innerHeight, mobile = W < 760;
+      const ah = mobile ? Math.min(H * .46, W * 1.05) : Math.min(H * .74, 820), aw = ah / 1.4;
+      const cx = mobile ? W / 2 : W * .66, cy = mobile ? H * .36 : H * .54;
+      const cols = mobile ? 9 : 11, c = aw / cols, rows = Math.round(ah / c);
+      const cells = [];
+      for (let r = rows - 1; r >= 0; r--) for (let q = 0; q < cols; q++) {
+        const u = (q + .5) / cols, v = (r + .5) / rows;
+        // keel-arch silhouette: straight sides below 41%, then curving in to a point
+        const half = v >= .414 ? .5 : .5 * Math.sqrt(1 - Math.pow(1 - v / .414, 2)) * (.86 + .14 * v / .414);
+        if (Math.abs(u - .5) <= half - .25 / cols) cells.push([cx - aw / 2 + (q + .5) * c, cy - ah / 2 + (r + .5) * c]);
+      }
+      plan = tiles.map((t, i) => {
+        const cell = cells[i % cells.length];
+        t.style.width = t.style.height = (c - 2).toFixed(1) + 'px';
+        t.style.display = i < cells.length ? '' : 'none';
+        return { tx: cell[0], ty: cell[1], sx: rnd(i, 1) * W, sy: rnd(i, 2) * H * 1.3 - H * .15, r: (rnd(i, 3) - .5) * 60, d: rnd(i, 4) * .38 };
+      });
+      if (ring) { ring.style.width = aw + 'px'; ring.style.height = ah + 'px'; ring.style.left = cx + 'px'; ring.style.top = cy + 'px'; }
+      if (ms.__p !== undefined) ms.__onP(ms.__p);
+    };
+    ms.__onP = p => {
+      ms.__p = p;
+      plan.forEach((pl, i) => {
+        const k = ease(clamp((p - pl.d) / .5));
+        const x = pl.sx + (pl.tx - pl.sx) * k, y = pl.sy + (pl.ty - pl.sy) * k;
+        tiles[i].style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -50%) rotate(${(pl.r * (1 - k)).toFixed(1)}deg) scale(${(.55 + .45 * k).toFixed(3)})`;
+        tiles[i].style.opacity = (.35 + .65 * k).toFixed(3);
+      });
+      if (ring) ring.style.opacity = clamp((p - .78) * 5).toFixed(3);
+      ms.style.setProperty('--m', clamp((p - .55) * 2.2).toFixed(3));
+    };
+  });
+
   /* ---------- scroll scenes: geometry cached, progress eased toward the scroll target ---------- */
-  const scenes = $$('.scrolly').map(el => ({ el, top: 0, span: 1, p: 0, target: 0, shown: -1 }));
+  const scenes = $$('.scrolly, .flowy').map(el => ({ el, flow: el.classList.contains('flowy'), top: 0, span: 1, p: 0, target: 0, shown: -1 }));
   const words = $$('.ayah-en .w');
   const tree = $('.tree-scene');
   const tiers = tree ? $$('.tier', tree) : [];
@@ -141,7 +317,7 @@
   const rail = $('.rail');
   const measure = () => {
     if (rail) rail.closest('.scrolly').style.setProperty('--rail-x', Math.max(0, rail.scrollWidth - innerWidth) + 'px');
-    scenes.forEach(sc => { const r = sc.el.getBoundingClientRect(); sc.top = r.top + scrollY; sc.span = Math.max(1, sc.el.offsetHeight - innerHeight); });
+    scenes.forEach(sc => { const r = sc.el.getBoundingClientRect(); sc.top = r.top + scrollY; sc.span = Math.max(1, sc.flow ? sc.el.offsetHeight : sc.el.offsetHeight - innerHeight); if (sc.el.__measure) sc.el.__measure(); sc.shown = -1; });
     if (heroFrame) heroFrame.resize();
   };
   let lastLit = -1, lastTier = -1;
@@ -150,6 +326,7 @@
     if (Math.abs(p - sc.shown) < .0002) return;
     sc.shown = p;
     sc.el.style.setProperty('--p', p.toFixed(4));
+    if (sc.el.__onP) sc.el.__onP(p);
     if (sc.el.classList.contains('hero') && heroFrame) heroFrame.draw(p);
     if (sc.el.classList.contains('ayah') && words.length) {
       const lit = Math.floor(clamp((p - .08) / .8) * (words.length + 1));
@@ -173,7 +350,7 @@
     let moving = false;
     const y = scrollY, vh = innerHeight;
     for (const sc of scenes) {
-      sc.target = clamp((y - sc.top) / sc.span);
+      sc.target = sc.flow ? clamp((y + vh * .62 - sc.top) / sc.span) : clamp((y - sc.top) / sc.span);
       if (y + vh < sc.top - vh || y > sc.top + sc.span + 2 * vh) { if (sc.p !== sc.target) { sc.p = sc.target; apply(sc); } continue; }
       sc.p += (sc.target - sc.p) * k;
       if (Math.abs(sc.target - sc.p) < .0004) sc.p = sc.target; else moving = true;
@@ -191,7 +368,7 @@
   if (document.fonts) document.fonts.ready.then(() => { measure(); kickScenes(); });
   new ResizeObserver(() => measure()).observe(document.body);
   measure(); onHeader(); kickScenes();
-  if (reduce) { words.forEach(w => w.classList.add('lit')); tiers.forEach(t => t.classList.add('on')); nodes.forEach(n => n.classList.add('on')); }
+  if (reduce) { words.forEach(w => w.classList.add('lit')); tiers.forEach(t => t.classList.add('on')); nodes.forEach(n => n.classList.add('on')); scenes.forEach(sc => { if (sc.el.__onP) sc.el.__onP(sc.flow ? 1 : .999); }); }
   $$('.tree-svg .draw').forEach(p => p.setAttribute('pathLength', 1));
 
   /* ---------- hero slideshow inside the arch ---------- */

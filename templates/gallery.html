@@ -3,7 +3,20 @@
 {% block title %}Photo gallery{% endblock %}
 {% block main %}
 {{ phero('Photo gallery', 'Life at <b>Rawdat.</b>', 'الصور', albums|length ~ ' albums of trips, khidmat, workshops, competitions and celebrations.') }}
-<section style="padding-bottom:clamp(72px,10vw,140px)">
+{# ---- Every album finds its place: covers fly in to form a keel arch ---- #}
+<section class="scrolly mosaic" aria-label="Albums forming an arch">
+  <div class="stage">
+    <div class="mosaic-copy">
+      <div class="kick">Every moment, in its place</div>
+      <h2 class="h1" style="margin-top:16px;color:#f3ecda"><b class="gold-text">{{ albums|length }}</b> albums.<br>One arch of memories.</h2>
+      <p class="lead" style="color:rgba(243,236,218,.72)">Trips and khidmat, workshops and competitions, celebrations and quiet learning — gathered from years of school life.</p>
+    </div>
+    {% for i in range(150) %}{% set a = albums[i % albums|length] %}<div class="tile"><img src="{{ a.cover|media }}" alt="" loading="lazy"></div>{% endfor %}
+    <svg class="mosaic-ring" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true"><path d="M-3 143V57C-3 30 18 11 41 2L50-4l9 6c23 9 44 28 44 55v86"/></svg>
+  </div>
+</section>
+
+<section style="padding-top:clamp(56px,8vw,110px);padding-bottom:clamp(72px,10vw,140px)">
   <div class="wrap">
     <div class="filters" data-filter-group="#albums" style="margin-bottom:36px">
       <button class="chip on" data-filter="*">All</button>

@@ -4,6 +4,34 @@
 {% block main %}
 {{ phero('Calendar', 'Two calendars, <b>one school year.</b>', 'التقويم', 'Every date shown in both the Gregorian and the Misri (Fatemi) Hijri calendar.') }}
 {%- set y, m = first.year, first.month -%}
+{# ---- The moon of this month: a ring of Hijri days, today glowing in gold ---- #}
+<section class="sec-tight" style="padding-top:0">
+  <div class="wrap split" style="align-items:center">
+    <div class="moon-ring" data-reveal="fade">
+      {% set n = moon.days|length %}
+      <svg viewBox="-215 -215 430 430" role="img" aria-label="{{ moon.month_en }} {{ moon.year }}H: day {{ moon.today }} of {{ n }}">
+        <circle r="165" fill="none" stroke="var(--line-2)" stroke-dasharray="2 6"/>
+        {% for dd in moon.days %}
+          {% set a = (-90 - loop.index0 * 360 / n) * 3.14159265 / 180 %}
+          {% set cx = (165 * cos(a))|round(1) %}{% set cy = (165 * sin(a))|round(1) %}
+          <circle class="d {{ 'past' if dd.n < moon.today }} {{ 'today' if dd.n == moon.today }} {{ 'ev' if dd.ev }}" cx="{{ cx }}" cy="{{ cy }}" r="{{ 13 if dd.n == moon.today else 8 }}" style="--i:{{ loop.index0 }}"><title>{{ dd.n }} {{ moon.month_en }} · {{ dd.greg.strftime('%a %-d %b') }}</title></circle>
+          {% if dd.n == 1 or dd.n % 5 == 0 or dd.n == moon.today %}
+          <text class="lbl {{ 'today' if dd.n == moon.today }}" x="{{ (198 * cos(a))|round(1) }}" y="{{ (198 * sin(a))|round(1) }}">{{ dd.n|ardigits }}</text>
+          {% endif %}
+        {% endfor %}
+        <g transform="translate(0 -62)"><circle r="34" fill="var(--paper-3)"/><path d="{{ moon.moon }}" fill="var(--gold-2)"/></g>
+      </svg>
+      <div class="moon-centre" style="padding-top:60px"><div><div class="day gold-text">{{ moon.today|ardigits }}</div><div class="ar">{{ moon.month_ar }}</div><div class="caps muted" style="font-size:10px;margin-top:6px">{{ moon.year }}H</div></div></div>
+    </div>
+    <div>
+      <div class="kick" data-reveal>This month</div>
+      <h2 class="h2" style="margin:16px 0" data-reveal>{{ moon.month_en }}, <b>{{ moon.year }}H</b></h2>
+      <p class="lead" data-reveal>Day {{ moon.today }} of {{ moon.days|length }} in the Misri calendar. Days already passed glow in the accent colour; days ringed are school events.</p>
+    </div>
+  </div>
+</section>
+
+
 {%- set prev_m = (y ~ '-' ~ '%02d'|format(m-1)) if m > 1 else ((y-1) ~ '-12') -%}
 {%- set next_m = (y ~ '-' ~ '%02d'|format(m+1)) if m < 12 else ((y+1) ~ '-01') -%}
 {%- set ev_by_day = {} -%}

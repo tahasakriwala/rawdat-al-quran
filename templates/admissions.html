@@ -28,24 +28,46 @@
   </div>
 </section>
 
-<section class="sec sec-paper2">
-  <div class="wrap split" style="align-items:start">
-    <div>
-      <div class="kick" data-reveal>The admission process</div>
-      <h2 class="h2" style="margin:16px 0 26px" data-reveal>Six steps, <b>clearly marked.</b></h2>
-      <ol class="journey" style="padding:0;margin:0">
-        {% for t, d in A.steps %}<li data-reveal><div><h4>{{ t }}</h4><p>{{ d }}</p></div></li>{% endfor %}
-      </ol>
+{# ---- The path to the door: six steps along a golden path to an arch that opens ---- #}
+<section class="sec sec-paper2" style="padding-bottom:60px">
+  <div class="wrap">
+    <div class="stem-root">
+      <div class="kick center" data-reveal>The admission process</div>
+      <h2 class="h1" style="margin-top:18px" data-reveal>Six steps to <b class="gold-text">the door.</b></h2>
     </div>
+    <div class="stem stem-road flowy" data-sway="90">
+      {% include 'partials/stem_svg.html' %}
+      <ol class="stem-list">
+        {% for t, d in A.steps %}
+        <li class="stem-item">
+          <div class="stem-node"><svg><use href="#khatam"/></svg></div>
+          <div class="stem-card"><div class="stem-when"><span>Step {{ '%02d'|format(loop.index) }}</span></div><h3>{{ t }}</h3><p>{{ d }}</p></div>
+        </li>
+        {% endfor %}
+      </ol>
+      <div class="stem-bloom">
+        <div class="stem-door" aria-hidden="true">
+          <div class="jamb"></div>
+          <div class="inside"><div><div class="ar" style="font-size:34px">أهلاً وسهلاً</div><div class="caps" style="margin-top:6px;font-size:10px;letter-spacing:.3em">Welcome</div></div></div>
+          <div class="leafL"></div><div class="leafR"></div>
+        </div>
+        <p class="lead" style="margin:22px auto 0;max-width:560px">to the Rawdat family. <a class="link-arrow" href="#enquire" style="margin-left:8px">Begin with an enquiry <svg><use href="#arrow"/></svg></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-tight">
+  <div class="wrap split" style="align-items:start">
     <div>
       <div class="kick" data-reveal>Fees</div>
       <h2 class="h2" style="margin:16px 0 18px" data-reveal>Annual fee structure</h2>
       <p class="muted" data-reveal>Fees are confirmed by the Admissions Office and paid online through the school’s secure payment page.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px" data-reveal>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0" data-reveal>
         <a class="btn btn-gold" href="{{ school.links.fees }}" target="_blank" rel="noopener">Pay fees online ↗</a>
       </div>
-      {% if flyers %}<div class="grid g2" data-lb-group="Admissions">{% for f in flyers %}<a href="{{ f|media }}" data-lb data-reveal style="--d:{{ loop.index0 }}"><img src="{{ f|media }}" alt="Admissions flyer {{ loop.index }}" style="border:1px solid var(--line-2)" loading="lazy"></a>{% endfor %}</div>{% endif %}
     </div>
+    <div>{% if flyers %}<div class="grid g2" data-lb-group="Admissions">{% for f in flyers %}<a href="{{ f|media }}" data-lb data-reveal style="--d:{{ loop.index0 }}"><img src="{{ f|media }}" alt="Admissions flyer {{ loop.index }}" style="border:1px solid var(--line-2)" loading="lazy"></a>{% endfor %}</div>{% endif %}</div>
   </div>
 </section>
 

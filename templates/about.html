@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% from 'partials/macros.html' import phero, orn %}
-{% block title %}About us{% endblock %}
+{% block title %}Our story{% endblock %}
 {% block main %}
-{{ phero('About us', 'A home for al-Quran,<br><b>for the young.</b>', 'من نحن', 'Rawdat al-Quran al-Kareem is a programme of Mahad al-Zahra, Aljamea-tus-Saifiyah, for children aged four and above in Mumbai.') }}
+{{ phero('Our story', 'A home for al-Quran,<br><b>for the young.</b>', 'قصتنا', 'Rawdat al-Quran al-Kareem is a programme of Mahad al-Zahra, Aljamea-tus-Saifiyah, for children aged four and above in Mumbai.') }}
 
 <section class="sec-tight">
   <div class="wrap split wide-left">
@@ -11,35 +11,88 @@
       <blockquote class="bigquote" style="margin-top:24px;font-size:clamp(22px,2.4vw,34px)" data-reveal>{{ a.founder_quote }}</blockquote>
       <p style="margin-top:22px" data-reveal><b>{{ a.founder }}</b><br><span class="muted small">{{ a.founder_source }}</span></p>
     </div>
-    <div data-reveal="scale"><div class="archw" style="max-width:380px;margin-left:auto"><div class="arch"><img src="{{ ex.about_page[0]|media }}" alt="Bayan" loading="lazy"></div></div></div>
-  </div>
-</section>
-
-<section class="sec sec-paper2">
-  <div class="wrap-narrow">
-    <div class="kick" data-reveal>Our vision</div>
-    <h2 class="h2" style="margin:20px 0 34px" data-reveal>From Surat, 1381H, to <b>Warden Road</b>, Mumbai.</h2>
-    <div class="prose" data-reveal>{% for p in a.vision %}<p>{{ p }}</p>{% endfor %}</div>
-    <figure style="margin:40px 0 0;text-align:center" data-reveal>
-      <p class="ar" style="font-size:clamp(26px,3.4vw,44px);color:var(--gold-deep);margin:0">{{ ayah.ar }}</p>
-      <figcaption class="lead" style="margin-top:14px">“{{ ayah.en }}” <span class="muted">{{ ayah.ref }}</span></figcaption>
+    <figure class="manuscript" data-reveal="scale">
+      {% for c in ['tl','tr','bl','br'] %}<svg class="corner {{ c }}"><use href="#khatam"/></svg>{% endfor %}
+      <a href="{{ ex.about_page[0]|media }}" data-lb data-lb-group="Bayan"><img src="{{ ex.about_page[0]|media }}" alt="Bayan of al-Dai al-Ajal Syedna Mohammed Burhanuddin RA on Mahad al-Zahra"></a>
+      <figcaption>al-Kalemaat al-Nooraniyah · 1397H</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="sec">
+{# ---- The Silsila: a golden vine grows down the story, flowering at each milestone ---- #}
+<section class="sec sec-paper2" style="padding-bottom:40px">
   <div class="wrap">
-    <div style="text-align:center;max-width:820px;margin:0 auto 56px">
-      <div class="kick center" data-reveal>Our belief</div>
-      <h2 class="h1" style="margin-top:20px" data-reveal>Every child, in an environment of <span class="gold-text">R.E.L.A.X</span></h2>
+    <div class="stem-root">
+      <div class="kick center" data-reveal>The silsila of our story</div>
+      <h2 class="h1" style="margin-top:18px" data-reveal>From a root in Surat<br>to a <b class="gold-text">garden in Mumbai.</b></h2>
+      <p class="lead" style="max-width:640px;margin:18px auto 0" data-reveal>Scroll, and watch the vine grow.</p>
     </div>
-    <div class="relax">
-      {% for l, w, ar, d in relax %}
-      <div data-reveal style="--d:{{ loop.index0 }}"><span class="letter gold-text">{{ l }}</span><b>{{ w }}</b><span class="ar">{{ ar }}</span><p>{{ d }}</p></div>
-      {% endfor %}
+    <div class="stem flowy" data-sway="60">
+      {% include 'partials/stem_svg.html' %}
+      <ol class="stem-list">
+        {% set story = [
+          ('1381H', '1961', 'The <b>root</b>', 'al-Dai al-Ajal Syedna Taher Saifuddin RA inaugurates the new campus of Aljamea-tus-Saifiyah in Surat — a fresh chapter in the history of the academy.', None),
+          ('1396H', '1976', 'Mahad <b>al-Zahra</b>', 'al-Dai al-Ajal Syedna Mohammed Burhanuddin RA establishes an institute for Quranic arts and sciences: accurate memorisation of al-Quran, and understanding of its meanings and intricacies.', None),
+          ('1397H', '', 'A name, <b>a barakat</b>', '“I named it Mahad al-Zahra so that it may receive the barakat and blessings of Moulatona Fatema al-Zahra.” — al-Kalemaat al-Nooraniyah', None),
+          ('', '', 'A centre for <b>the young</b>', 'With the raza Mubarak of Syedna Mohammed Burhanuddin RA and Syedna Aali Qadr Mufaddal Saifuddin TUS, Mahad al-Zahra launches a new centre in Mumbai for children aged four and above.', None),
+          ('', '', 'In the city of <b>Rawdat Tahera</b>', 'The programme makes its home in the city of Rawdat Tahera, where the entire Quran is engraved upon marble slabs embellished with gold and precious stones.', None),
+          ('', '', 'A unique <b>pedagogy</b>', 'Children commit al-Quran to memory while being exposed to every form of knowledge that branches from it — growing academically, culturally and socially, year after year.', None),
+          ('Today', '', '<b class="gold-text">26 Huffaz</b> and counting', 'Fourteen Mathlathon toppers, and recognition as the Best Innovative School in Child Development.', ex.award_banner),
+        ] %}
+        {% for h, g, title, text, img in story %}
+        <li class="stem-item">
+          <div class="stem-node"><svg><use href="#khatam"/></svg></div>
+          <div class="stem-card">
+            <div class="stem-when">{% if h %}<span>{{ h }}</span>{% endif %}{% if g %}<span class="muted">{{ g }}</span>{% endif %}</div>
+            <h3>{{ title|safe }}</h3>
+            <p>{{ text }}</p>
+            {% if img %}<img class="stem-img" src="{{ img|media }}" alt="" loading="lazy" style="border:1px solid var(--line-2)">{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      <div class="stem-bloom">
+        <p class="ar" style="font-size:clamp(28px,3.4vw,46px);color:var(--gold-deep);margin:0">{{ ayah.ar }}</p>
+        <p class="lead" style="margin:12px auto 0;max-width:720px">“{{ ayah.en }}” <span class="muted">{{ ayah.ref }}</span></p>
+      </div>
     </div>
-    <div class="wrap-narrow" style="margin-top:60px"><div class="prose no-drop" data-reveal>{% for p in a.belief %}<p>{{ p }}</p>{% endfor %}</div></div>
   </div>
+</section>
+
+{# ---- R.E.L.A.X: five petals open one by one ---- #}
+<section class="scrolly flower-scene" aria-label="Our belief: R.E.L.A.X">
+  <div class="stage">
+    <svg class="flower" viewBox="-110 -110 220 220" role="img" aria-label="A five-petal flower: Respect, Empathy, Love, Appreciation, X factor">
+      <defs>
+        <linearGradient id="petalFill" x1="0" y1="1" x2="0" y2="0"><stop offset="0" style="stop-color:var(--paper-2)"/><stop offset="1" stop-color="#e9d9a8"/></linearGradient>
+        <linearGradient id="petalOn" x1="0" y1="1" x2="0" y2="0"><stop offset="0" style="stop-color:rgb(var(--e-700))"/><stop offset="1" stop-color="#c9a24c"/></linearGradient>
+      </defs>
+      {% for l, w, ar, d in relax %}
+      <g class="petal" style="--r:{{ loop.index0 * 72 }}deg">
+        <path d="M0 -6 C 26 -26 32 -70 0 -100 C -32 -70 -26 -26 0 -6 Z"/>
+        <text x="0" y="-62" transform="rotate({{ -loop.index0 * 72 }} 0 -62)">{{ l }}</text>
+      </g>
+      {% endfor %}
+      <g class="flower-core"><circle r="15" fill="var(--paper-2)" stroke="var(--gold)" stroke-width="1"/><use href="#khatam" x="-10" y="-10" width="20" height="20" style="color:var(--gold-deep)"/></g>
+    </svg>
+    <div>
+      <div class="kick">Our belief</div>
+      <div class="flower-panels">
+        {% for l, w, ar, d in relax %}
+        <div class="flower-panel">
+          <div class="big gold-text">{{ l }}</div>
+          <h3>{{ w }}</h3>
+          <div class="ar">{{ ar }}</div>
+          <p>{{ d }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap-narrow"><div class="prose no-drop" data-reveal>{% for p in a.belief %}<p>{{ p }}</p>{% endfor %}</div></div>
 </section>
 
 <section class="sec sec-ink lattice-bg" style="text-align:center">
@@ -54,7 +107,6 @@
     <div class="ach">
       {% for x in achievements %}<div data-reveal style="--d:{{ loop.index0 }}"><div class="num gold-text">{% if x.value.isdigit() %}<span data-count="{{ x.value }}">0</span>{% else %}{{ x.value }}{% endif %}</div><div class="lbl">{{ x.label }}</div><div class="ach-note">{{ x.note }}</div></div>{% endfor %}
     </div>
-    {% if ex.award_banner %}<img src="{{ ex.award_banner|media }}" alt="Best Innovative School in Child Development award" style="margin-top:40px;width:100%;border:1px solid var(--line-2)" loading="lazy" data-reveal>{% endif %}
   </div>
 </section>
 {% endblock %}

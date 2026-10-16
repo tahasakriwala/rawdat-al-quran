@@ -4,19 +4,23 @@
 {% block main %}
 {{ phero('Our campus', 'Arches, light and<br><b>soothing colour.</b>', 'مدرستنا', 'Khatau Mansion, Oomer Park, Warden Road — two floors designed around how young children learn.') }}
 
-<section style="padding-bottom:clamp(48px,7vw,96px)">
-  <div class="wrap">
-    <div class="campus-hero" data-reveal="scale"><img src="{{ ex.hero[0]|media }}" alt="The atrium at Rawdat al-Quran al-Kareem"></div>
+{# ---- Walk through the doorways: each keel arch opens onto the next ---- #}
+{% set door_imgs = [ex.hero[0], ex.campus[2], ex.campus[7], ex.campus[12], ex.campus[18], ex.hero[2]] %}
+<section class="scrolly tunnel" aria-label="A walk through the campus">
+  <div class="stage">
+    <div class="door-head"><div class="kick center">Walk the corridors</div></div>
+    {% for img in door_imgs %}
+    <div class="door" style="z-index:{{ 20 - loop.index0 }}"><div class="archw"><div class="arch"><img src="{{ img|media }}" alt="Rawdat campus" decoding="async"></div></div></div>
+    {% endfor %}
+    <div class="door-caps">
+      {% for t, d in features %}<div class="door-cap"><span class="n">{{ '%02d'|format(loop.index) }} / {{ '%02d'|format(features|length) }}</span><b>{{ t }}</b><span>{{ d }}</span></div>{% endfor %}
+    </div>
+    <div class="door-dots">{% for _ in features %}<i></i>{% endfor %}</div>
   </div>
 </section>
 
 <section class="sec-tight">
-  <div class="wrap split wide-left">
-    <div class="prose" data-reveal><p>{{ text }}</p></div>
-    <div class="grid g2">
-      {% for t, d in features %}<div class="card" data-reveal style="--d:{{ loop.index0 }}"><svg class="star"><use href="#khatam"/></svg><h3 class="h3" style="margin:12px 0 6px;font-size:17px">{{ t }}</h3><p class="muted small" style="margin:0">{{ d }}</p></div>{% endfor %}
-    </div>
-  </div>
+  <div class="wrap-narrow"><div class="prose" data-reveal><p>{{ text }}</p></div></div>
 </section>
 
 <section class="sec">

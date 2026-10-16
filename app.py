@@ -114,6 +114,8 @@ def create_app(test_config=None):
         return f"{d} {h['month_ar'].split()[0]}" if h['day'] == 1 else d
 
     app.jinja_env.globals['timedelta'] = timedelta
+    import math
+    app.jinja_env.globals.update(cos=math.cos, sin=math.sin)
 
     @app.template_global()
     def asset(path):

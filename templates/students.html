@@ -3,6 +3,29 @@
 {% block title %}Our students{% endblock %}
 {% block main %}
 {{ phero('Our students', 'Blossoming into<br><b>lovely flowers.</b>', 'طلابنا', 'Every class carries an Arabic name, from al-Tamheedi to al-Taseah.') }}
+{# ---- The Ascent: twelve Arabic-named classes rising toward the dome of al-Quran ---- #}
+<section class="scrolly ascent" aria-label="The ascent through the classes">
+  <div class="stage">
+    <div class="steps">
+      {% for c in classes %}<div class="step" style="--i:{{ loop.index0 }}" data-ar="{{ c.ar }}"><small>{{ c.label|replace('Grade ', 'G') }}</small></div>{% endfor %}
+      <div class="ascent-dome"><div class="archw"><div class="arch" style="display:grid;place-items:center;background:var(--accent-deep)"><img src="{{ logo_mark }}" alt="" style="width:70%;height:auto;object-fit:contain"></div></div></div>
+      <svg class="ascent-mark" viewBox="0 0 24 24" aria-hidden="true"><use href="#khatam"/></svg>
+    </div>
+    <div>
+      <div class="kick">The ascent</div>
+      <div class="ascent-panels">
+        {% for c in classes %}
+        <div class="ascent-panel">
+          <div class="ar-name">{{ c.ar }}</div>
+          <h3>{{ c.label }} · <b>{{ c.name }}</b></h3>
+          <p>{{ c.phase }}{% if groups.get(c.slug) %} · {{ groups[c.slug]|length }} students on the class wall{% endif %}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
 <section style="padding-bottom:clamp(72px,10vw,140px)">
   <div class="wrap">
     <div class="filters" data-filter-group="#wall" style="margin-bottom:34px;position:sticky;top:calc(var(--hdr-h) + 8px);z-index:5;background:var(--paper);padding:10px 0">

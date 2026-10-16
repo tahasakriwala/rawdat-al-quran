@@ -138,7 +138,30 @@ def events():
     month_events = db.q("SELECT * FROM events WHERE substr(day,1,7)=? ORDER BY day", (first.strftime('%Y-%m'),))
     past = db.q("SELECT * FROM events WHERE day<? AND demo=0 ORDER BY day DESC", (t.isoformat(),))
     return render_template('events.html', first=first, upcoming=upcoming, month_events=month_events, past=past,
-                           albums={a['slug']: a for a in C.data('albums')})
+                           albums={a['slug']: a for a in C.data('albums')}, moon=_hijri_month(t))
+
+
+def _hijri_month(t):
+    """The current Misri month as a ring of days: which are past, today, and which carry events."""
+    from datetime import timedelta
+    from flask import current_app
+    import hijri as H
+    off = current_app.config['HIJRI_OFFSET_DAYS']
+    y, m, d = H.to_hijri(t, off)
+    n = H._month_days(y, m)
+    start = t - timedelta(days=d - 1)
+    ev_days = {r['day'] for r in db.q('SELECT day FROM events WHERE day BETWEEN ? AND ?',
+                                       (start.isoformat(), (start + timedelta(days=n - 1)).isoformat()))}
+    days = [dict(n=i + 1, greg=(start + timedelta(days=i)), ev=(start + timedelta(days=i)).isoformat() in ev_days) for i in range(n)]
+    import math
+    phase, R = d / 29.53, 34
+    k = math.cos(2 * math.pi * phase)
+    rx = abs(k) * R
+    if phase < .5:   # waxing: right side lit
+        moon = f'M0 {-R} A{R} {R} 0 0 1 0 {R} A{rx:.1f} {R} 0 0 {1 if k < 0 else 0} 0 {-R}Z'
+    else:            # waning: left side lit
+        moon = f'M0 {-R} A{R} {R} 0 0 0 0 {R} A{rx:.1f} {R} 0 0 {0 if k < 0 else 1} 0 {-R}Z'
+    return dict(year=y, month_en=H.MONTHS[m - 1][0], month_ar=H.MONTHS[m - 1][1], today=d, days=days, moon=moon)
 
 
 @bp.route('/admissions', methods=['GET', 'POST'])
