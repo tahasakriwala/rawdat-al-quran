@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}{{ title }}{% endblock %}
+{% block main %}
+{{ phero(kicker, title, '', pages|length ~ ' pages · use ← → to turn pages, tap any page to zoom.', (kicker, back)) }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap reader" data-lb-group="{{ title }}">
+    <div class="reader-bar"><a class="link-arrow" href="{{ back }}" style="border:0"><svg style="transform:rotate(180deg)"><use href="#arrow"/></svg> Back</a><span class="caps muted">Page <span data-page-ctr>1 / {{ pages|length }}</span></span></div>
+    {% for p in pages %}<a class="reader-page" href="{{ p|media }}" data-lb data-i="{{ loop.index0 }}"><img src="{{ p|media }}" alt="{{ title }} — page {{ loop.index }}" loading="{{ 'eager' if loop.index < 3 else 'lazy' }}"></a>{% endfor %}
+    {% for l in links %}<a class="btn btn-line" href="{{ l }}" target="_blank" rel="noopener">Open linked folder ↗</a>{% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Testimonials{% endblock %}
+{% block main %}
+{{ phero('Testimonials', '“When will the child<br>read <b>to you</b>?”', 'آراء الآباء', 'Parents describe the moment their child first read a story back to them, from the school’s reading programme.') }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap">
+    <div class="tcols">
+      {% for t in items %}
+      <article class="card" data-reveal style="--d:{{ loop.index0 % 3 }}">
+        <svg class="star"><use href="#khatam"/></svg>
+        <p style="margin:14px 0 18px;font-size:{{ '19px' if t.quote|length < 300 else '16px' }};line-height:1.6;color:var(--ink-2)">{{ t.quote }}</p>
+        <footer class="caps" style="color:var(--gold-deep)">{{ t.child }}’s {{ t.relation }} · {{ t.grade }}</footer>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

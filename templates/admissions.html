@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Admissions{% endblock %}
+{% block main %}
+{{ phero('Admissions', 'Join the <b>Rawdat family.</b>', 'القبول', A.intro[0]) }}
+
+<section class="sec-tight" style="padding-top:0">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="kick" data-reveal>Who can apply</div>
+      <h2 class="h2" style="margin:16px 0 18px" data-reveal>Junior KG begins at <b class="gold-text">four years</b>, as on 1st June.</h2>
+      <p class="lead" data-reveal>{{ A.intro[1] }}</p>
+      <div class="cls-map" data-reveal>
+        {% for c in classes %}<div><b>{{ c.label }}</b><span class="ar">{{ c.ar }}</span><small>{{ 4 + loop.index0 }}+ yrs</small></div>{% endfor %}
+      </div>
+    </div>
+    <div class="card" style="position:sticky;top:calc(var(--hdr-h) + 20px)" data-reveal>
+      <div class="kick">Eligibility checker</div>
+      <form class="form" data-elig style="margin-top:18px">
+        <div class="grid g2">
+          <div class="field"><label for="e-dob">Child’s date of birth</label><input id="e-dob" type="date" name="dob" required></div>
+          <div class="field"><label for="e-y">Academic year</label><select id="e-y" name="year">{% for y in years %}<option value="{{ y[:4] }}">{{ y }}</option>{% endfor %}</select></div>
+        </div>
+      </form>
+      <div class="elig-out" data-elig-out><p class="muted" style="margin:0">Enter a date of birth to see the age-appropriate class.</p></div>
+      <p class="muted small" style="margin:10px 0 0">A guide only. The Admissions Office confirms every placement.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-paper2">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="kick" data-reveal>The admission process</div>
+      <h2 class="h2" style="margin:16px 0 26px" data-reveal>Six steps, <b>clearly marked.</b></h2>
+      <ol class="journey" style="padding:0;margin:0">
+        {% for t, d in A.steps %}<li data-reveal><div><h4>{{ t }}</h4><p>{{ d }}</p></div></li>{% endfor %}
+      </ol>
+    </div>
+    <div>
+      <div class="kick" data-reveal>Fees</div>
+      <h2 class="h2" style="margin:16px 0 18px" data-reveal>Annual fee structure</h2>
+      <p class="muted" data-reveal>Fees are confirmed by the Admissions Office and paid online through the school’s secure payment page.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px" data-reveal>
+        <a class="btn btn-gold" href="{{ school.links.fees }}" target="_blank" rel="noopener">Pay fees online ↗</a>
+      </div>
+      {% if flyers %}<div class="grid g2" data-lb-group="Admissions">{% for f in flyers %}<a href="{{ f|media }}" data-lb data-reveal style="--d:{{ loop.index0 }}"><img src="{{ f|media }}" alt="Admissions flyer {{ loop.index }}" style="border:1px solid var(--line-2)" loading="lazy"></a>{% endfor %}</div>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="enquire">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="kick">Enquire</div>
+      <h2 class="h1" style="margin:16px 0 18px">Start with a <b>conversation.</b></h2>
+      <p class="lead">Send an enquiry and you’ll get a reference number at once. Use it to follow your application from Admission Kit to confirmed seat.</p>
+      <a class="link-arrow" href="{{ url_for('site.track') }}" style="margin-top:12px">Already enquired? Track it <svg><use href="#arrow"/></svg></a>
+      <div class="note" style="margin-top:30px">Admissions Office · Tel <a href="tel:{{ school.phone_href }}"><b>{{ school.phone }}</b></a><br>{{ school.address|join(', ') }}</div>
+    </div>
+    <form class="form card" method="post" action="{{ url_for('site.admissions') }}#enquire" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      {% macro f(name, label, type='text', ph='') -%}
+      <div class="field {{ 'bad' if errors.get(name) }}"><label for="f-{{ name }}">{{ label }}</label><input id="f-{{ name }}" name="{{ name }}" type="{{ type }}" value="{{ form.get(name, '') }}" placeholder="{{ ph }}">{% if errors.get(name) %}<span class="err">{{ errors[name] }}</span>{% endif %}</div>
+      {%- endmacro %}
+      <div class="grid g2">{{ f('parent_name', 'Parent’s name') }}{{ f('phone', 'Phone', 'tel') }}</div>
+      {{ f('email', 'Email', 'email') }}
+      <div class="grid g2">{{ f('child_name', 'Child’s name') }}{{ f('dob', 'Child’s date of birth', 'date') }}</div>
+      <div class="grid g2">
+        <div class="field"><label for="f-cls">Class sought</label><select id="f-cls" name="class_slug">{% for c in classes %}<option value="{{ c.slug }}" {{ 'selected' if form.get('class_slug') == c.slug }}>{{ c.label }} · {{ c.name }}</option>{% endfor %}</select></div>
+        <div class="field"><label for="f-ay">Academic year</label><select id="f-ay" name="academic_year">{% for y in years %}<option {{ 'selected' if form.get('academic_year') == y }}>{{ y }}</option>{% endfor %}</select></div>
+      </div>
+      <div class="field"><label for="f-msg">Anything we should know?</label><textarea id="f-msg" name="message">{{ form.get('message', '') }}</textarea></div>
+      <button class="btn" type="submit">Send enquiry</button>
+      <p class="muted small" style="margin:0">Your details are used only by the Admissions Office to respond to this enquiry.</p>
+    </form>
+  </div>
+</section>
+{% endblock %}

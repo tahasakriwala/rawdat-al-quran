@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Events & calendar{% endblock %}
+{% block main %}
+{{ phero('Calendar', 'Two calendars, <b>one school year.</b>', 'التقويم', 'Every date shown in both the Gregorian and the Misri (Fatemi) Hijri calendar.') }}
+{%- set y, m = first.year, first.month -%}
+{%- set prev_m = (y ~ '-' ~ '%02d'|format(m-1)) if m > 1 else ((y-1) ~ '-12') -%}
+{%- set next_m = (y ~ '-' ~ '%02d'|format(m+1)) if m < 12 else ((y+1) ~ '-01') -%}
+{%- set ev_by_day = {} -%}
+{%- for e in month_events %}{% set _ = ev_by_day.setdefault(e.day, []).append(e) %}{% endfor -%}
+<section style="padding-bottom:clamp(48px,7vw,96px)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+      <div><h2 class="h2">{{ first.strftime('%B %Y') }}</h2><div class="ar" style="font-size:22px;color:var(--gold-deep);text-align:left">{{ first|hijri('ar') }}</div></div>
+      <div style="display:flex;gap:8px">
+        <a class="icon-btn" href="{{ url_for('site.events', m=prev_m) }}" aria-label="Previous month"><svg style="transform:rotate(180deg)"><use href="#chev"/></svg></a>
+        <a class="btn btn-line btn-sm" href="{{ url_for('site.events') }}">Today</a>
+        <a class="icon-btn" href="{{ url_for('site.events', m=next_m) }}" aria-label="Next month"><svg><use href="#chev"/></svg></a>
+      </div>
+    </div>
+    <div class="cal">
+      {% for d in ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] %}<div class="hd">{{ d }}</div>{% endfor %}
+      {% for _ in range(first.weekday()) %}<div class="out"></div>{% endfor %}
+      {% set ndays = ((first.replace(day=28) + timedelta(days=4)).replace(day=1) - first).days %}
+      {% for i in range(ndays) %}
+        {% set d = first + timedelta(days=i) %}{% set iso = d.isoformat() %}
+        <div class="{{ 'today' if d == today }}">
+          <span class="g">{{ d.day }}</span><span class="h">{{ d|hday }}</span>
+          {% for e in ev_by_day.get(iso, []) %}<span class="ev {{ 'demo' if e.demo }}" title="{{ e.title }}">{{ e.title }}</span>{% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="legend" style="margin-top:14px"><span><i style="background:color-mix(in srgb,var(--accent) 40%,transparent)"></i>School event</span><span><i style="background:color-mix(in srgb,var(--gold) 50%,transparent)"></i>Sample (demo data)</span><span>Arabic numerals = Hijri day</span></div>
+  </div>
+</section>
+
+<section class="sec-tight sec-paper2">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="kick">Coming up</div>
+      <div style="margin-top:18px">
+      {% for e in upcoming %}
+      <div class="ev-row">
+        <div class="ev-date"><b>{{ e.day[8:10]|int }}</b><small>{{ e.day|nicedate('%b') }}</small><span class="ar">{{ e.day|hijri('ar') }}</span></div>
+        <div><h4 class="h3" style="font-size:18px">{{ e.title }}</h4><p class="muted small" style="margin:4px 0 0">{{ e.description if not e.description.startswith('album:') else '' }}</p></div>
+        <div>{% if e.demo %}<span class="tag demo">Sample</span>{% endif %}</div>
+      </div>
+      {% else %}<p class="muted">Nothing scheduled yet.</p>{% endfor %}
+      </div>
+    </div>
+    <div>
+      <div class="kick">Past happenings</div>
+      <div style="margin-top:18px">
+      {% for e in past[:14] %}
+        {% set al = albums.get(e.description[6:]) if e.description and e.description.startswith('album:') else None %}
+        <a class="ev-row" href="{{ url_for('site.album', slug=al.slug) if al else '#' }}" style="grid-template-columns:64px 1fr auto">
+          {% if al %}<div class="archw" style="width:64px"><div class="arch"><img src="{{ al.cover|media }}" alt="" loading="lazy"></div></div>{% else %}<span></span>{% endif %}
+          <div><h4 class="h3" style="font-size:16px">{{ e.title }}</h4><span class="muted small">{{ e.day|nicedate('%-d %B %Y') }} · <span class="ar">{{ e.day|hijri('ar') }}</span></span></div>
+          <svg width="16" height="16"><use href="#chev"/></svg>
+        </a>
+      {% endfor %}
+      </div>
+      <a class="link-arrow" style="margin-top:20px" href="{{ url_for('site.gallery') }}">All albums <svg><use href="#arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+{% endblock %}

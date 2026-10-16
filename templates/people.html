@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero, person %}
+{% block title %}Our people{% endblock %}
+{% block main %}
+{{ phero('Our people', 'The people who<br><b>nurture every child.</b>', 'أساتذتنا') }}
+
+<section class="sec-tight">
+  <div class="wrap split wide-left photo-first" style="align-items:start">
+    <div>
+      <div class="kick" data-reveal>A welcome from the Principal</div>
+      <div class="prose" style="margin-top:24px" data-reveal>{% for p in msg %}<p>{{ p }}</p>{% endfor %}</div>
+      <p data-reveal><b>{{ p.principal.name }}</b><br><span class="caps muted">Principal</span></p>
+    </div>
+    <div style="position:sticky;top:calc(var(--hdr-h) + 30px)" data-reveal="scale"><div class="archw" style="max-width:380px;margin-left:auto"><div class="arch"><img src="{{ p.principal.photo|media }}" alt="{{ p.principal.name }}"></div></div></div>
+  </div>
+</section>
+
+<section class="sec sec-paper2">
+  <div class="wrap">
+    <div class="kick" data-reveal>Heads of department</div>
+    <h2 class="h2" style="margin:16px 0 36px" data-reveal>Leadership</h2>
+    <div class="grid g4">{% for h in p.hods %}<div data-reveal style="--d:{{ loop.index0 % 4 }}">{{ person(h) }}</div>{% endfor %}</div>
+  </div>
+</section>
+
+<section class="sec" id="staff">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <div><div class="kick">Faculty & staff</div><h2 class="h2" style="margin-top:16px">{{ p.male|length + p.female|length }} educators</h2></div>
+      <div class="field" style="min-width:260px"><label for="sq">Find a teacher</label><input id="sq" data-search="#staff-list" placeholder="Type a name"></div>
+    </div>
+    <div class="filters" data-filter-group="#staff-list" style="margin-bottom:24px">
+      <button class="chip on" data-filter="*">All</button><button class="chip" data-filter="male">Male staff</button><button class="chip" data-filter="female">Female staff</button>
+    </div>
+    <div class="roster" id="staff-list">
+      {% for s in p.male %}<div data-tags="male" data-name="{{ s.name }}"><span class="av">{% if s.photo %}<img src="{{ s.photo|media }}" alt="" loading="lazy">{% else %}{{ s.name|initials }}{% endif %}</span>{{ s.name }}</div>{% endfor %}
+      {% for s in p.female %}<div data-tags="female" data-name="{{ s.name }}"><span class="av">{{ s.name|initials }}</span>{{ s.name }}</div>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

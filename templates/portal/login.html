@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Family portal{% endblock %}
+{% block footer %}{% endblock %}
+{% block main %}
+<section class="login">
+  <div class="login-art">
+    <img src="{{ 'https://rawdatalquran.com/wp-content/uploads/revslider/home-top-slider/home-banner-2.jpg'|media }}" alt="">
+    <div class="login-art-in">
+      <div class="ar-d" style="font-size:clamp(40px,5vw,72px);color:var(--gold-2);line-height:1.2">بوابة الأسرة</div>
+      <p class="caps" style="color:#f3ecda;letter-spacing:.4em;margin-top:12px">Family portal</p>
+      <p style="color:rgba(243,236,218,.78);max-width:380px;margin-top:22px">Your child’s Hifz journey, attendance, class announcements and a direct line to the class teacher — in one calm place.</p>
+    </div>
+  </div>
+  <div class="login-form">
+    <form class="form" method="post" style="width:min(400px,100%)">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <img src="{{ logo_crest }}" alt="" style="width:72px">
+      <div><div class="kick">Sign in</div><h1 class="h2" style="margin-top:12px">Welcome <b>back.</b></h1></div>
+      {% if err %}<div class="note" style="border-left-color:#a3283c">{{ err }}</div>{% endif %}
+      <div class="field"><label for="u">Username</label><input id="u" name="username" autocomplete="username" autofocus></div>
+      <div class="field"><label for="p">Password</label><input id="p" name="password" type="password" autocomplete="current-password"></div>
+      <button class="btn">Sign in</button>
+      {% if config.SHOW_DEMO_DATA %}<p class="demo-ribbon" style="margin:0">Demo build · see README for sample accounts</p>{% endif %}
+      <hr class="hair">
+      <div class="caps muted">Other school services</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <a class="chip" href="{{ links.reports }}" target="_blank" rel="noopener">Report cards ↗</a>
+        <a class="chip" href="{{ links.tahfeez_portal }}" target="_blank" rel="noopener">Tahfeez portal ↗</a>
+        <a class="chip" href="{{ links.fees }}" target="_blank" rel="noopener">Fees ↗</a>
+        <a class="chip" href="{{ links.webmail }}" target="_blank" rel="noopener">Staff mail ↗</a>
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

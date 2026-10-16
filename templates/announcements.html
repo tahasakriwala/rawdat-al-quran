@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Announcements{% endblock %}
+{% block main %}
+{{ phero('Announcements', 'What families <b>need to know.</b>', 'الإعلانات', 'School-wide notices, and notes for each class.') }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap">
+    <div class="filters" style="margin-bottom:34px">
+      <a class="chip {{ 'on' if cls == 'all' }}" href="{{ url_for('site.announcements') }}">All</a>
+      {% for c in classes %}<a class="chip {{ 'on' if cls == c.slug }}" href="{{ url_for('site.announcements', **{'class': c.slug}) }}">{{ c.label }} <span class="ar" style="font-size:14px">{{ c.ar }}</span></a>{% endfor %}
+    </div>
+    <div class="wrap-narrow" style="padding:0;margin:0">
+      {% for a in rows %}
+      <article class="ann" data-reveal>
+        <div class="ann-side"><b>{{ a.created|nicedate('%d') }}</b><span class="caps muted">{{ a.created|nicedate('%b %Y') }}</span><span class="ar" style="color:var(--gold-deep);font-size:14px">{{ a.created|hijri('ar') }}</span></div>
+        <div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+            {% if a.pinned %}<span class="tag" style="border-color:var(--accent);color:var(--accent)">Pinned</span>{% endif %}
+            <span class="tag">{{ 'Whole school' if a.class_slug == 'all' else class_by_slug[a.class_slug].label }}</span>
+            {% if a.demo %}<span class="tag demo">Sample</span>{% endif %}
+          </div>
+          <h2 class="h3">{{ a.title }}</h2>
+          <p style="color:var(--ink-2);margin:8px 0 0">{{ a.body }}</p>
+          {% if a.author %}<p class="caps muted" style="margin-top:12px">{{ a.author }}</p>{% endif %}
+        </div>
+      </article>
+      {% else %}
+      <p class="muted">No announcements for this class yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

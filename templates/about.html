@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero, orn %}
+{% block title %}About us{% endblock %}
+{% block main %}
+{{ phero('About us', 'A home for al-Quran,<br><b>for the young.</b>', 'من نحن', 'Rawdat al-Quran al-Kareem is a programme of Mahad al-Zahra, Aljamea-tus-Saifiyah, for children aged four and above in Mumbai.') }}
+
+<section class="sec-tight">
+  <div class="wrap split wide-left">
+    <div>
+      <div class="kick" data-reveal>In the words of our founder</div>
+      <blockquote class="bigquote" style="margin-top:24px;font-size:clamp(22px,2.4vw,34px)" data-reveal>{{ a.founder_quote }}</blockquote>
+      <p style="margin-top:22px" data-reveal><b>{{ a.founder }}</b><br><span class="muted small">{{ a.founder_source }}</span></p>
+    </div>
+    <div data-reveal="scale"><div class="archw" style="max-width:380px;margin-left:auto"><div class="arch"><img src="{{ ex.about_page[0]|media }}" alt="Bayan" loading="lazy"></div></div></div>
+  </div>
+</section>
+
+<section class="sec sec-paper2">
+  <div class="wrap-narrow">
+    <div class="kick" data-reveal>Our vision</div>
+    <h2 class="h2" style="margin:20px 0 34px" data-reveal>From Surat, 1381H, to <b>Warden Road</b>, Mumbai.</h2>
+    <div class="prose" data-reveal>{% for p in a.vision %}<p>{{ p }}</p>{% endfor %}</div>
+    <figure style="margin:40px 0 0;text-align:center" data-reveal>
+      <p class="ar" style="font-size:clamp(26px,3.4vw,44px);color:var(--gold-deep);margin:0">{{ ayah.ar }}</p>
+      <figcaption class="lead" style="margin-top:14px">“{{ ayah.en }}” <span class="muted">{{ ayah.ref }}</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div style="text-align:center;max-width:820px;margin:0 auto 56px">
+      <div class="kick center" data-reveal>Our belief</div>
+      <h2 class="h1" style="margin-top:20px" data-reveal>Every child, in an environment of <span class="gold-text">R.E.L.A.X</span></h2>
+    </div>
+    <div class="relax">
+      {% for l, w, ar, d in relax %}
+      <div data-reveal style="--d:{{ loop.index0 }}"><span class="letter gold-text">{{ l }}</span><b>{{ w }}</b><span class="ar">{{ ar }}</span><p>{{ d }}</p></div>
+      {% endfor %}
+    </div>
+    <div class="wrap-narrow" style="margin-top:60px"><div class="prose no-drop" data-reveal>{% for p in a.belief %}<p>{{ p }}</p>{% endfor %}</div></div>
+  </div>
+</section>
+
+<section class="sec sec-ink lattice-bg" style="text-align:center">
+  <div class="wrap-narrow">
+    {{ orn('short') }}
+    <p class="bigquote" style="font-size:clamp(24px,3vw,40px)" data-reveal>{{ a.smile }}</p>
+  </div>
+</section>
+
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="ach">
+      {% for x in achievements %}<div data-reveal style="--d:{{ loop.index0 }}"><div class="num gold-text">{% if x.value.isdigit() %}<span data-count="{{ x.value }}">0</span>{% else %}{{ x.value }}{% endif %}</div><div class="lbl">{{ x.label }}</div><div class="ach-note">{{ x.note }}</div></div>{% endfor %}
+    </div>
+    {% if ex.award_banner %}<img src="{{ ex.award_banner|media }}" alt="Best Innovative School in Child Development award" style="margin-top:40px;width:100%;border:1px solid var(--line-2)" loading="lazy" data-reveal>{% endif %}
+  </div>
+</section>
+{% endblock %}

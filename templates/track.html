@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Track your application{% endblock %}
+{% block main %}
+{{ phero('Track', 'Where is my <b>application?</b>', 'متابعة الطلب', 'Enter the reference number you received and the email you used.', ('Admissions', url_for('site.admissions'))) }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap split" style="align-items:start">
+    <form class="form card" method="get">
+      <div class="field"><label for="t-ref">Reference number</label><input id="t-ref" name="ref" value="{{ ref }}" placeholder="RQK-XXXXXX" style="text-transform:uppercase;letter-spacing:.1em"></div>
+      <div class="field"><label for="t-em">Email</label><input id="t-em" name="email" type="email" value="{{ email }}"></div>
+      <button class="btn">Track</button>
+      {% if searched and not enq %}<p class="note" style="margin:0">We couldn’t find that combination. Check the reference number and email.</p>{% endif %}
+    </form>
+    <div>
+      {% if enq %}
+        {% if new %}<div class="note ok" style="margin-bottom:24px"><b>Thank you, {{ enq.parent_name }}.</b> Your enquiry is in. Keep this reference: <b style="letter-spacing:.08em">{{ enq.ref }}</b></div>{% endif %}
+        <div class="kick">{{ enq.ref }}</div>
+        <h2 class="h2" style="margin:14px 0 6px">{{ enq.child_name }}</h2>
+        <p class="muted">{{ class_by_slug[enq.class_slug].label if enq.class_slug in class_by_slug else '' }} · {{ enq.academic_year }} · received {{ enq.created|nicedate }}</p>
+        {% if enq.status in closed %}
+          <div class="note" style="margin-top:20px">Status: <b>{{ closed[enq.status] }}</b>. The Admissions Office will be in touch.</div>
+        {% else %}
+          {% set keys = stages|map(attribute=0)|list %}{% set cur = keys.index(enq.status) %}
+          <ol class="tracker" style="margin-top:28px">
+            {% for k, label in stages %}<li class="{{ 'done' if loop.index0 < cur }} {{ 'cur done' if loop.index0 == cur }}"><span><b>{{ label }}</b>{% if loop.index0 == cur %}<br><span class="small muted">Current stage · updated {{ enq.updated|nicedate }}</span>{% endif %}</span></li>{% endfor %}
+          </ol>
+        {% endif %}
+      {% else %}
+        <div class="kick">The journey</div>
+        <ol class="tracker" style="margin-top:22px">{% for k, label in stages %}<li><span>{{ label }}</span></li>{% endfor %}</ol>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

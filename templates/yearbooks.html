@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Year books{% endblock %}
+{% block main %}
+{{ phero('Year books', 'Years worth <b>remembering.</b>', 'الكتاب السنوي', 'Year books from 2016 onward, and creative work made by our students.') }}
+<section style="padding-bottom:clamp(60px,8vw,110px)">
+  <div class="wrap">
+    <div class="grid g4">
+      {% for y in items %}
+      <a class="nl" href="{{ url_for('site.yearbook', slug=y.slug) }}" data-reveal style="--d:{{ loop.index0 }}">
+        <div class="nl-cover"><img src="{{ y.cover|media }}" alt="{{ y.title }} {{ y.year }}" loading="lazy"></div>
+        <h3 class="h3" style="margin-top:14px;font-size:18px">{{ y.title }}</h3><span class="caps muted">{{ y.year }} · {{ y.pages|length }} pages</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="sec sec-paper2">
+  <div class="wrap">
+    <div class="kick" data-reveal>Student works</div>
+    <h2 class="h2" style="margin:16px 0 30px" data-reveal>Made by our students</h2>
+    <div class="grid g4">
+      {% for w in works %}<a class="nl" href="{{ url_for('site.student_work', slug=w.slug) }}" data-reveal><div class="nl-cover" style="aspect-ratio:16/9"><img src="{{ w.cover|media }}" alt="{{ w.title }}" loading="lazy"></div><h3 class="h3" style="margin-top:14px;font-size:18px">{{ w.title }}</h3><span class="caps muted">{{ w.pages|length }} slides</span></a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

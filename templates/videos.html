@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Videos{% endblock %}
+{% block main %}
+{{ phero('Videos', 'Rawdat, <b>in motion.</b>', 'المرئيات', 'Programmes, performances and moments from the school year. Tap a film to play it.') }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap">
+    <div class="grid g3">
+      {% for v in videos %}<button class="vid" data-yt="{{ v }}" data-reveal style="--d:{{ loop.index0 % 3 }}" aria-label="Play video {{ loop.index }}"><img src="https://i.ytimg.com/vi/{{ v }}/hqdefault.jpg" alt="" loading="lazy"><span class="play"><svg width="24" height="24"><use href="#play"/></svg></span></button>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

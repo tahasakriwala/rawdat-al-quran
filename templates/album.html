@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}{{ a.title }}{% endblock %}
+{% block main %}
+{{ phero(a.category, a.title, '', (a.date|nicedate('%-d %B %Y')) ~ ' · ' ~ (a.date|hijri) ~ ' · ' ~ a.images|length ~ ' photographs', ('Gallery', url_for('site.gallery'))) }}
+<section style="padding-bottom:clamp(60px,8vw,110px)">
+  <div class="wrap">
+    {% if a.text %}<div class="wrap-narrow" style="padding:0;margin:0 0 40px"><p class="lead" data-reveal>{{ a.text }}</p></div>{% endif %}
+    <div class="masonry" data-lb-group="{{ a.title }}">
+      {% for img in a.images %}<a href="{{ img|media }}" data-lb data-reveal="fade"><img src="{{ img|media }}" alt="{{ a.title }} — photo {{ loop.index }}" loading="lazy"></a>{% endfor %}
+    </div>
+    <div class="pn">
+      {% if prev %}<a href="{{ url_for('site.album', slug=prev.slug) }}"><span class="caps muted">← Newer</span><b>{{ prev.title }}</b></a>{% else %}<span></span>{% endif %}
+      {% if nxt %}<a href="{{ url_for('site.album', slug=nxt.slug) }}" style="text-align:right"><span class="caps muted">Older →</span><b>{{ nxt.title }}</b></a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

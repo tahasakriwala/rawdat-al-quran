@@ -1,0 +1,34 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: rawdat-al-quran
+    runtime: python
+    plan: starter            # needed for the persistent disk below (free plan has no disks)
+    region: singapore        # closest Render region to Mumbai
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --preload --workers 2 --threads 4 --timeout 60 --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: RAWDAT_SECRET
+        generateValue: true
+      - key: RAWDAT_DB
+        value: /var/data/rawdat.sqlite3
+      - key: BEHIND_PROXY
+        value: "1"
+      - key: SECURE_COOKIES
+        value: "1"
+      - key: SHOW_DEMO_DATA
+        value: "1"
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: TEACHER_PASSWORD
+        generateValue: true
+      - key: PARENT_PASSWORD
+        generateValue: true
+    disk:
+      name: rawdat-data
+      mountPath: /var/data
+      sizeGB: 1

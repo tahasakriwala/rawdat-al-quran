@@ -1,0 +1,13 @@
+<div class="pbar">
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:14px">
+      <span class="caps" style="color:var(--gold-deep)">{{ {'parent':'Family portal','teacher':'Teacher’s desk','admin':'School office'}[user.role] }}</span>
+      <span class="muted small">{{ user.name }}</span>
+      {% if config.SHOW_DEMO_DATA %}<span class="tag demo">Sample data</span>{% endif %}
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span class="small muted">{{ today.strftime('%a %-d %b') }} · <span class="ar">{{ hijri.ar }}</span></span>
+      <form method="post" action="{{ url_for('portal.logout') }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="chip">Sign out</button></form>
+    </div>
+  </div>
+</div>

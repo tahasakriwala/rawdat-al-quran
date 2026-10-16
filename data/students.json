@@ -1,0 +1,1026 @@
+{
+ "skg": [
+  {
+   "name": "Amatullah Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Amatullah-Shakir-2.jpg"
+  },
+  {
+   "name": "Burhanuddin Haveliwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Haveliwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Maimoon",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Maimoon.jpg"
+  },
+  {
+   "name": "Burhanuddin Rashid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Rashid.jpg"
+  },
+  {
+   "name": "Burhnuddin Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhnuddin-Master.jpg"
+  },
+  {
+   "name": "Husaina Balasinorwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Balasinorwala.jpg"
+  },
+  {
+   "name": "Husaina Husamuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Husamuddin.jpg"
+  },
+  {
+   "name": "Husaina Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Master.jpg"
+  },
+  {
+   "name": "Insiyah Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Insiyah-Dungarpurwala.jpg"
+  },
+  {
+   "name": "Mohammed Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mohammed-Kanchwala.jpg"
+  },
+  {
+   "name": "Mubarakah Patanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mubarakah-Patanwala.jpg"
+  },
+  {
+   "name": "Ruqaiyah Kagazwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ruqaiyah-Kagazwala.jpg"
+  },
+  {
+   "name": "Sakina Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sakina-Kanchwala.jpg"
+  },
+  {
+   "name": "Wazira Mohyuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Wazira-Mohyuddin.jpg"
+  },
+  {
+   "name": "Zahra Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Badri.jpg"
+  },
+  {
+   "name": "Zahra Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Dungarpurwala.jpg"
+  },
+  {
+   "name": "Zahra Lokhandwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Lokhandwala.jpg"
+  }
+ ],
+ "grade1": [
+  {
+   "name": "Batul Poonawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Batul-Poonawala.jpg"
+  },
+  {
+   "name": "Burhanuddin Babujee",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Babujee.jpg"
+  },
+  {
+   "name": "Burhanuddin Burhani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Burhani.jpg"
+  },
+  {
+   "name": "Burhanuddin Lilamwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Lilamwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Motiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Motiwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Najmuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Najmuddin.jpg"
+  },
+  {
+   "name": "Burhanuddin Taiyyebi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Taiyyebi.jpg"
+  },
+  {
+   "name": "Burhanuddin Udaipurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Udaipurwala.jpg"
+  },
+  {
+   "name": "Husain Al-Anwar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Al-Anwar.jpg"
+  },
+  {
+   "name": "Husain Lokhandwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Lokhandwala.jpg"
+  },
+  {
+   "name": "Husaina Hakimuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Hakimuddin.jpg"
+  },
+  {
+   "name": "Husaina Khorakiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Khorakiwala.jpg"
+  },
+  {
+   "name": "Mohammed Angothiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mohammed-Angothiwala.jpg"
+  },
+  {
+   "name": "Qaizar Rangoonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Qaizar-Rangoonwala.jpg"
+  },
+  {
+   "name": "Ruqaiyah Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ruqaiyah-Badri.jpg"
+  },
+  {
+   "name": "Ruqaiyah Galabhaiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ruqaiyah-Galabhaiwala.jpg"
+  },
+  {
+   "name": "Ummekulsum Taher bs",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ummekulsum-Taher-bs.jpg"
+  },
+  {
+   "name": "Zahra Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Shakir.jpg"
+  }
+ ],
+ "grade2": [
+  {
+   "name": "Abdeali Modi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Abdeali-Modi.jpg"
+  },
+  {
+   "name": "Adnan Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Adnan-Yamani.jpg"
+  },
+  {
+   "name": "Aliasger Angoothiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Aliasger-Angoothiwala.jpg"
+  },
+  {
+   "name": "Amatullah Kapasi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Amatullah-Kapasi.jpg"
+  },
+  {
+   "name": "Amatullah Ratlamwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Amatullah-Ratlamwala.jpg"
+  },
+  {
+   "name": "Batul Kopti",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Batul-Kopti.jpg"
+  },
+  {
+   "name": "Buhanuddin Laxmidhar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Buhanuddin-Laxmidhar.jpg"
+  },
+  {
+   "name": "Burhanuddin Dalal",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Dalal.jpg"
+  },
+  {
+   "name": "Burhanuddin Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Dungarpurwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Mendardawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Mendardawala.jpg"
+  },
+  {
+   "name": "Burhanuddin Pardawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Pardawala.jpg"
+  },
+  {
+   "name": "Hatim Vajihuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Hatim-Vajihuddin.jpg"
+  },
+  {
+   "name": "Husaina Baranwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Baranwala.jpg"
+  },
+  {
+   "name": "Huzaifa Lokhandwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Huzaifa-Lokhandwala.jpg"
+  },
+  {
+   "name": "Insiyah Cassimjee",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Insiyah-Cassimjee.jpg"
+  },
+  {
+   "name": "Insiyah Sehorewala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Insiyah-Sehorewala.jpg"
+  },
+  {
+   "name": "Mariyah Hamdani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mariyah-Hamdani.jpg"
+  },
+  {
+   "name": "Mohammed Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mohammed-Kanchwala-1.jpg"
+  }
+ ],
+ "grade3": [
+  {
+   "name": "Alqaid Johar Burhanuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Alqaid-Johar-Burhanuddin.jpg"
+  },
+  {
+   "name": "Burhanuddin Haveliwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Haveliwala-2.jpg"
+  },
+  {
+   "name": "Burhanuddin Kagalwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Kagalwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Kagazwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Kagazwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Kanchwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Master.jpg"
+  },
+  {
+   "name": "Fatema Dalal",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Fatema-Dalal.jpg"
+  },
+  {
+   "name": "Fatema Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Fatema-Husami.jpg"
+  },
+  {
+   "name": "Fatema Lokhandwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Fatema-Lokhandwala.jpg"
+  },
+  {
+   "name": "Hamza Safdari",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Hamza-Safdari.jpg"
+  },
+  {
+   "name": "Husaina Tinwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Tinwala.jpg"
+  },
+  {
+   "name": "Insiyah Khorakiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Insiyah-Khorakiwala.jpg"
+  },
+  {
+   "name": "Mariyah Kapadia",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mariyah-Kapadia.jpg"
+  },
+  {
+   "name": "Ruqaiyah Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ruqaiyah-Kanchwala.jpg"
+  },
+  {
+   "name": "Ruqaiyah Ratlamwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ruqaiyah-Ratlamwala.jpg"
+  },
+  {
+   "name": "Sakina Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sakina-Husami.jpg"
+  }
+ ],
+ "grade4": [
+  {
+   "name": "Abdeali Kagalwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Abdeali-Kagalwala.jpg"
+  },
+  {
+   "name": "Ajab Rangoonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ajab-Rangoonwala.jpg"
+  },
+  {
+   "name": "Farida Patanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Farida-Patanwala.jpg"
+  },
+  {
+   "name": "Husain Lunawadwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Lunawadwala.jpg"
+  },
+  {
+   "name": "Husaina Cassimjee",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husaina-Cassimjee.jpg"
+  },
+  {
+   "name": "Insiyah Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Insiyah-Husami.jpg"
+  },
+  {
+   "name": "Khadijah Amravatiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Khadijah-Amravatiwala.jpg"
+  },
+  {
+   "name": "Maryam Nagarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Maryam-Nagarwala.jpg"
+  },
+  {
+   "name": "Mohammed Chaderwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mohammed-Chaderwala.jpg"
+  },
+  {
+   "name": "Mohammed Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mohammed-Kanchwala-2.jpg"
+  },
+  {
+   "name": "Mohammed Mohyuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mohammed-Mohyuddin.jpg"
+  },
+  {
+   "name": "Mukarram Motiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mukarram-Motiwala.jpg"
+  },
+  {
+   "name": "Mustafa Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mustafa-Badri.jpg"
+  },
+  {
+   "name": "Ruqaiyah Hathyari",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ruqaiyah-Hathyari.jpg"
+  },
+  {
+   "name": "Shirin Husamuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Shirin-Husamuddin.jpg"
+  },
+  {
+   "name": "Taher Zakiuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Taher-Zakiuddin.jpg"
+  },
+  {
+   "name": "Abdulqader Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/05/Abdulqader-Shakir.jpeg"
+  }
+ ],
+ "grade5": [
+  {
+   "name": "Abdulqader Kapasi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Abdulqader-Kapasi.jpg"
+  },
+  {
+   "name": "Abdulqader Poonawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Abdulqader-Poonawala.jpg"
+  },
+  {
+   "name": "Arwa Ujjainwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Arwa-Ujjainwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Al-Anwar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Burhanuddin-Al-Anwar.jpg"
+  },
+  {
+   "name": "Husain Burque",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Burque.jpg"
+  },
+  {
+   "name": "Huzaifa Nooruddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Huzaifa-Nooruddin.jpg"
+  },
+  {
+   "name": "Huzaifa Suterwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Huzaifa-Suterwala.jpg"
+  },
+  {
+   "name": "Ibrahim Husain",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ibrahim-Husain.jpg"
+  },
+  {
+   "name": "Jumana Vajihuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Jumana-Vajihuddin.jpg"
+  },
+  {
+   "name": "Lamya Rampurawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Lamya-Rampurawala.jpg"
+  },
+  {
+   "name": "Mariyah Pardawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mariyah-Pardawala.jpg"
+  },
+  {
+   "name": "Miqdad Bharmal",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Miqdad-Bharmal.jpg"
+  },
+  {
+   "name": "Nafisa Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Nafisa-Badri.jpg"
+  },
+  {
+   "name": "Nafisa Bhanpurawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Nafisa-Bhanpurawala.jpg"
+  },
+  {
+   "name": "Shireen Najmuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Shireen-Najmuddin.jpg"
+  },
+  {
+   "name": "Zahra Kapadia",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Kapadia.jpg"
+  },
+  {
+   "name": "Zainab Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zainab-Dungarpurwala.jpg"
+  }
+ ],
+ "grade6": [
+  {
+   "name": "Aliasger Ujjainwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Aliasger-Ujjainwala.jpg"
+  },
+  {
+   "name": "Farida Hamdani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Farida-Hamdani.jpg"
+  },
+  {
+   "name": "Fatema Khorakiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Fatema-Khorakiwala.jpg"
+  },
+  {
+   "name": "Hawra Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Hawra-Badri.jpg"
+  },
+  {
+   "name": "Husain Siraj",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Siraj.jpg"
+  },
+  {
+   "name": "Idris Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Idris-Husami.jpg"
+  },
+  {
+   "name": "Insiyah Vaziri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Insiyah-Vaziri.jpg"
+  },
+  {
+   "name": "Mariyah Akolawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mariyah-Akolawala.jpg"
+  },
+  {
+   "name": "Mufaddal Biviji",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mufaddal-Biviji.jpg"
+  },
+  {
+   "name": "Nafisa Ayman",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Nafisa-Ayman.jpg"
+  },
+  {
+   "name": "Sakina Malegaonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sakina-Malegaonwala.jpg"
+  },
+  {
+   "name": "Sakina Rangoonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sakina-Rangoonwala.jpg"
+  },
+  {
+   "name": "Sakina Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sakina-Yamani.jpg"
+  },
+  {
+   "name": "Taher Slatewala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Taher-Slatewala.jpg"
+  }
+ ],
+ "grade7": [
+  {
+   "name": "Amatullah Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Amatullah-Yamani.jpg"
+  },
+  {
+   "name": "Husain Dawood",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Dawood.jpg"
+  },
+  {
+   "name": "Husain Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Hamid.jpg"
+  },
+  {
+   "name": "Husain Taiyyebi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Taiyyebi.jpg"
+  },
+  {
+   "name": "Husain Zakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Zakir.jpg"
+  },
+  {
+   "name": "Huzaifa Baranwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Huzaifa-Baranwala.jpg"
+  },
+  {
+   "name": "Ibrahim Ezzi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ibrahim-Ezzi.jpg"
+  },
+  {
+   "name": "Jumana Talib",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Jumana-Talib.jpg"
+  },
+  {
+   "name": "Juzer Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Juzer-Hamid.jpg"
+  },
+  {
+   "name": "Khadijah Diwan",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Khadijah-Diwan.jpg"
+  },
+  {
+   "name": "Mansoor Poonawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mansoor-Poonawala.jpg"
+  },
+  {
+   "name": "Nafisa Ezzi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Nafisa-Ezzi.jpg"
+  },
+  {
+   "name": "Sarrah Jasdanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sarrah-Jasdanwala.jpg"
+  },
+  {
+   "name": "Shabbir Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Shabbir-Husami.jpg"
+  },
+  {
+   "name": "Taher Zakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Taher-Zakir.jpg"
+  },
+  {
+   "name": "Umaima Ezzuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Umaima-Ezzuddin.jpg"
+  },
+  {
+   "name": "Zahra Najmuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Najmuddin.jpg"
+  }
+ ],
+ "grade8": [
+  {
+   "name": "Ajab Jamaluddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Ajab-Jamaluddin.jpg"
+  },
+  {
+   "name": "Alefiyah Jasdanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Alefiyah-Jasdanwala.jpg"
+  },
+  {
+   "name": "Fatema Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Fatema-Yamani.jpg"
+  },
+  {
+   "name": "Hatim Husain",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Hatim-Husain.jpg"
+  },
+  {
+   "name": "Husain Dhuliawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Dhuliawala.jpg"
+  },
+  {
+   "name": "Husain Vapiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Husain-Vapiwala.jpg"
+  },
+  {
+   "name": "Moiz Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Moiz-Husami.jpg"
+  },
+  {
+   "name": "Mubarakah Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mubarakah-Husami.jpg"
+  },
+  {
+   "name": "Mufaddal Rasheed",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Mufaddal-Rasheed.jpg"
+  },
+  {
+   "name": "Munira Ariwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Munira-Ariwala.jpg"
+  },
+  {
+   "name": "Murtaza Nomani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Murtaza-Nomani.jpg"
+  },
+  {
+   "name": "Nafisa Zainuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Nafisa-Zainuddin.jpg"
+  },
+  {
+   "name": "Rabab Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Rabab-Husami.jpg"
+  },
+  {
+   "name": "Sakina Cassimjee",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Sakina-Cassimjee.jpg"
+  },
+  {
+   "name": "Taher Poonawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Taher-Poonawala.jpg"
+  },
+  {
+   "name": "Taher Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Taher-Shakir.jpg"
+  },
+  {
+   "name": "Taikhoom Shajahpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Taikhoom-Shajahpurwala.jpg"
+  },
+  {
+   "name": "Zahra Burhanuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Zahra-Burhanuddin.jpg"
+  }
+ ],
+ "archive": [
+  {
+   "name": "Amatullah Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Amatullah-Shakir.jpg"
+  },
+  {
+   "name": "Burhanuddin Haveliwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Burhanuddin-Haveliwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Maimoon",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Burhanuddin-Maimoon.jpg"
+  },
+  {
+   "name": "Burhanuddin Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Burhanuddin-Master.jpg"
+  },
+  {
+   "name": "Burhanuddin Raashid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Burhanuddin-Raashid.jpg"
+  },
+  {
+   "name": "Husaina Balasinorwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Husaina-Balasinorwala.jpg"
+  },
+  {
+   "name": "Husaina Husamuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Husaina-Husamuddin.jpg"
+  },
+  {
+   "name": "Husaina Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Husaina-Master.jpg"
+  },
+  {
+   "name": "Insiyah Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Insiyah-Dungarpurwala.jpg"
+  },
+  {
+   "name": "Mohammed Kachwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Mohammed-Kachwala.jpg"
+  },
+  {
+   "name": "Mubarakah Patanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Mubarakah-Patanwala.jpg"
+  },
+  {
+   "name": "Ruqaiyah Kagazwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Ruqaiyah-Kagazwala.jpg"
+  },
+  {
+   "name": "Sakina Kachwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Sakina-Kachwala.jpg"
+  },
+  {
+   "name": "Vazira Mohyuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Vazira-Mohyuddin.jpg"
+  },
+  {
+   "name": "Zahra Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Zahra-Badri.jpg"
+  },
+  {
+   "name": "Zahra Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Zahra-Dungarpurwala.jpg"
+  },
+  {
+   "name": "Alqaid Johar Burhanuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Alqaid-Johar-Burhanuddin.jpg"
+  },
+  {
+   "name": "Burhanuddin Kagalwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Burhanuddin-Kagalwala.jpg"
+  },
+  {
+   "name": "Burhanuddin Kagazwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Burhanuddin-Kagazwala.jpg"
+  },
+  {
+   "name": "Fatema Dalal",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Fatema-Dalal.jpg"
+  },
+  {
+   "name": "Fatema Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Fatema-Husami.jpg"
+  },
+  {
+   "name": "Fatema Lokhandwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Fatema-Lokhandwala.jpg"
+  },
+  {
+   "name": "Hamza Safdari",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Hamza-Safdari.jpg"
+  },
+  {
+   "name": "Husaina Tinwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Husaina-Tinwala.jpg"
+  },
+  {
+   "name": "Insiyah Khorakiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Insiyah-Khorakiwala.jpg"
+  },
+  {
+   "name": "Mariyah Kapadia",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Mariyah-Kapadia.jpg"
+  },
+  {
+   "name": "Ruqaiyah Kacnhwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Ruqaiyah-Kacnhwala.jpg"
+  },
+  {
+   "name": "Ruqaiyah Ratlamwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Ruqaiyah-Ratlamwala.jpg"
+  },
+  {
+   "name": "Sakina Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/05/Sakina-Husami.jpg"
+  },
+  {
+   "name": "Abdeali Kagalwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Abdeali-Kagalwala.jpg"
+  },
+  {
+   "name": "Ajab Rangoonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Ajab-Rangoonwala.jpg"
+  },
+  {
+   "name": "Farida Patanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Farida-Patanwala.jpg"
+  },
+  {
+   "name": "Husain Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Kanchwala.jpg"
+  },
+  {
+   "name": "Husain Lunavadwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Lunavadwala.jpg"
+  },
+  {
+   "name": "Husaina Cassimjee",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husaina-Cassimjee.jpg"
+  },
+  {
+   "name": "Insiyah Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Insiyah-Husami.jpg"
+  },
+  {
+   "name": "Khadijah Amravatiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Khadijah-Amravatiwala.jpg"
+  },
+  {
+   "name": "Maryam Nagarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Maryam-Nagarwala.jpg"
+  },
+  {
+   "name": "Mohammed Mohyuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mohammed-Mohyuddin.jpg"
+  },
+  {
+   "name": "Mufaddal Khanbhoy",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mufaddal-Khanbhoy.jpg"
+  },
+  {
+   "name": "Mukarram Motiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mukarram-Motiwala.jpg"
+  },
+  {
+   "name": "Mustafa Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mustafa-Badri.jpg"
+  },
+  {
+   "name": "Ruqaiyah Hathyari",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Ruqaiyah-Hathyari.jpg"
+  },
+  {
+   "name": "Shirin Husamuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Shirin-Husamuddin.jpg"
+  },
+  {
+   "name": "Taher Zakiuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Taher-Zakiuddin.jpg"
+  },
+  {
+   "name": "Zainab Adenwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Zainab-Adenwala.jpg"
+  },
+  {
+   "name": "Aliasger Ujjainwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Aliasger-Ujjainwala.jpg"
+  },
+  {
+   "name": "Arwa Hakimi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Arwa-Hakimi.jpg"
+  },
+  {
+   "name": "Fareedah Hamdani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Fareedah-Hamdani.jpg"
+  },
+  {
+   "name": "Fatema Khorakiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Fatema-Khorakiwala.jpg"
+  },
+  {
+   "name": "Hawra Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Hawra-Badri.jpg"
+  },
+  {
+   "name": "Husain Ezzuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Ezzuddin.jpg"
+  },
+  {
+   "name": "Husain Siraj",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Siraj.jpg"
+  },
+  {
+   "name": "Idris Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Idris-Husami.jpg"
+  },
+  {
+   "name": "Insiyah Vaziri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Insiyah-Vaziri.jpg"
+  },
+  {
+   "name": "Mariyah Akolawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mariyah-Akolawala.jpg"
+  },
+  {
+   "name": "Mufaddal Biviji",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mufaddal-Biviji.jpg"
+  },
+  {
+   "name": "Murtaza Najmuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Murtaza-Najmuddin.jpg"
+  },
+  {
+   "name": "Nafisa Ayman",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Nafisa-Ayman.jpg"
+  },
+  {
+   "name": "Sakina Malegaonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Sakina-Malegaonwala.jpg"
+  },
+  {
+   "name": "Sakina Rangoonwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Sakina-Rangoonwala.jpg"
+  },
+  {
+   "name": "Sakina Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Sakina-Yamani.jpg"
+  },
+  {
+   "name": "Taher Slatewala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Taher-Slatewala.jpg"
+  },
+  {
+   "name": "Abbas Haidermota",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Abbas-Haidermota.jpg"
+  },
+  {
+   "name": "Abdulqader Kapasi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Abdulqader-Kapasi.jpg"
+  },
+  {
+   "name": "Abdulqader Poonawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Abdulqader-Poonawala.jpg"
+  },
+  {
+   "name": "Arwa Ujjainwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Arwa-Ujjainwala.jpg"
+  },
+  {
+   "name": "Burhanuddin al-Anwar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Burhanuddin-al-Anwar.jpg"
+  },
+  {
+   "name": "Husain Burque",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Burque.jpg"
+  },
+  {
+   "name": "Huzaifa Nooruddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Huzaifa-Nooruddin.jpg"
+  },
+  {
+   "name": "Huzefa Suterwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Huzefa-Suterwala.jpg"
+  },
+  {
+   "name": "Ibrahim Husain",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Ibrahim-Husain.jpg"
+  },
+  {
+   "name": "Jumana Vajihuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Jumana-Vajihuddin.jpg"
+  },
+  {
+   "name": "Lamya Rampurawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Lamya-Rampurawala.jpg"
+  },
+  {
+   "name": "Mariyah Pardawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mariyah-Pardawala.jpg"
+  },
+  {
+   "name": "Miqdad Bharmal",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Miqdad-Bharmal.jpg"
+  },
+  {
+   "name": "Nafisa Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Nafisa-Badri.jpg"
+  },
+  {
+   "name": "Nafisa Bhanpurawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Nafisa-Bhanpurawala.jpg"
+  },
+  {
+   "name": "Shireen Najmuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Shireen-Najmuddin.jpg"
+  },
+  {
+   "name": "Zahra Kapadia",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Zahra-Kapadia.jpg"
+  },
+  {
+   "name": "Zainab Dungarpurwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Zainab-Dungarpurwala.jpg"
+  },
+  {
+   "name": "Amatullah Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Amatullah-Yamani.jpg"
+  },
+  {
+   "name": "Husain Dawood",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Dawood.jpg"
+  },
+  {
+   "name": "Husain Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Hamid.jpg"
+  },
+  {
+   "name": "Husain Taiyebi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Taiyebi.jpg"
+  },
+  {
+   "name": "Husain Zakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Husain-Zakir.jpg"
+  },
+  {
+   "name": "Huzefa Baranwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Huzefa-Baranwala.jpg"
+  },
+  {
+   "name": "Ibrahim Ezzi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Ibrahim-Ezzi.jpg"
+  },
+  {
+   "name": "Jumana Talib",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Jumana-Talib.jpg"
+  },
+  {
+   "name": "Juzer Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Juzer-Hamid.jpg"
+  },
+  {
+   "name": "Khadijah Diwan",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Khadijah-Diwan.jpg"
+  },
+  {
+   "name": "Mansoor Poonawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Mansoor-Poonawala.jpg"
+  },
+  {
+   "name": "Nafisa Ezzi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Nafisa-Ezzi.jpg"
+  },
+  {
+   "name": "Sarrah Jasdanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Sarrah-Jasdanwala.jpg"
+  },
+  {
+   "name": "Shabbir Husami",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Shabbir-Husami.jpg"
+  },
+  {
+   "name": "Taher Zakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Taher-Zakir.jpg"
+  },
+  {
+   "name": "Umaima Ezzuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Umaima-Ezzuddin.jpg"
+  },
+  {
+   "name": "Zahra Najmuddin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2019/06/Zahra-Najmuddin.jpg"
+  },
+  {
+   "name": "Huzaifa Suterwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2020/04/Huzaifa-Suterwala.jpg"
+  }
+ ]
+}

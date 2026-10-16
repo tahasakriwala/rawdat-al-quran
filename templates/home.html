@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% block body_class %}has-hero{% endblock %}
+{% block main %}
+
+{# 1 — HERO: a Fatemi keel-arch window onto the campus that opens to full bleed as you scroll #}
+<section class="scrolly hero" aria-label="Welcome">
+  <div class="stage">
+    <div class="hero-media">
+      {% for img in ex.hero %}<div class="slide {{ 'on' if loop.first }}"><img src="{{ img|media }}" alt="Inside Rawdat al-Quran al-Kareem" {% if not loop.first %}loading="lazy"{% endif %}></div>{% endfor %}
+    </div>
+    <div class="hero-shade"></div>
+    <svg class="hero-frame" aria-hidden="true"><path class="hf-hole"/><path class="hf-ring2"/><path class="hf-ring1"/></svg>
+    <div class="hero-top">
+      <div class="ar">بسم الله الرحمن الرحيم</div>
+      <div class="caps" style="margin-top:10px;letter-spacing:.42em;opacity:.75">{{ school.parent }}</div>
+    </div>
+    <div class="hero-date"><span class="ar">{{ hijri.ar }}</span>{{ today.strftime('%A, %-d %B %Y') }}</div>
+    <div class="hero-word">
+      <div class="wm" role="img" aria-label="روضة القرآن الكريم"></div>
+      <div class="en">Rawdat al-Quran al-Kareem</div>
+      <div class="tl">{{ school.tagline }}</div>
+    </div>
+    <div class="hero-cue"><span>Scroll</span><i></i></div>
+  </div>
+</section>
+
+{# 2 — inscription frieze #}
+<div class="frieze" aria-hidden="true"><div class="frieze-track">
+  {% for i in range(2) %}<span>{{ ayah.ar }}</span><svg><use href="#khatam"/></svg><span>روضة القرآن الكريم</span><svg><use href="#khatam"/></svg>{% endfor %}
+</div></div>
+
+{# Quick paths: what most visitors come for #}
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="kick" data-reveal>I’m looking for</div>
+    <div class="paths" style="margin-top:22px">
+      {% for t, ar, d, href, ext in [
+        ('Admissions', 'القبول', 'Eligibility, process and enquiry', url_for('site.admissions'), False),
+        ('Curriculum', 'المنهج', 'Tahfeez, Arabic and Cambridge', url_for('site.curriculum'), False),
+        ('Life at Rawdat', 'الحياة المدرسية', '47 albums, videos and stories', url_for('site.gallery'), False),
+        ('Calendar', 'التقويم', 'Hijri & Gregorian events', url_for('site.events'), False),
+        ('Family portal', 'بوابة الأسرة', 'Hifz progress and attendance', url_for('portal.home'), False),
+        ('Pay fees', 'الرسوم', 'Secure online payment ↗', school.links.fees, True)] %}
+      <a class="path" href="{{ href }}" {% if ext %}target="_blank" rel="noopener"{% endif %} data-reveal style="--d:{{ loop.index0 }}">
+        <span class="ar">{{ ar }}</span><b>{{ t }}</b><small>{{ d }}</small><svg><use href="#arrow"/></svg>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 3 — Ayah reveal: the verse that names our curriculum lights up word by word #}
+<section class="scrolly ayah lattice-bg" aria-label="Surah Ibrahim, ayah 24">
+  <div class="stage">
+    <div>
+      <div class="kick center" style="margin-bottom:28px">Our founding image · {{ ayah.ref }}</div>
+      <p class="ayah-ar" lang="ar" dir="rtl">{{ ayah.ar }}</p>
+      {% set hl = ['Kalemah', 'Tayyebah', 'good', 'tree,', 'root', 'firm,', 'heaven.'] %}
+      <p class="ayah-en">{% for w in ayah.en.split(' ') %}<span class="w {{ 'hl' if w in hl }}">{{ w }}</span> {% endfor %}</p>
+      <div class="ayah-ref"><div class="orn short"><i></i><svg><use href="#khatam"/></svg><i></i></div></div>
+    </div>
+  </div>
+</section>
+
+{# 4 — achievements in gold leaf #}
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="ach">
+      {% for a in achievements %}
+      <div data-reveal style="--d:{{ loop.index0 }}">
+        <div class="num gold-text">{% if a.value.isdigit() %}<span data-count="{{ a.value }}">0</span>{% else %}{{ a.value }}{% endif %}</div>
+        <div class="lbl">{{ a.label }}</div>
+        <div class="ach-note">{{ a.note }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# 5 — about #}
+<section class="sec">
+  <div class="wrap split">
+    <div data-reveal>
+      <div class="archw" style="max-width:460px"><div class="arch"><img src="{{ ex.student_slider|media }}" alt="Students of Rawdat al-Quran al-Kareem" loading="lazy"></div></div>
+    </div>
+    <div>
+      <div class="kick" data-reveal>About us</div>
+      <h2 class="h1" style="margin-top:22px" data-reveal>A beginning for <b>al-Quran</b>,<br>in the city of <span class="gold-text">Rawdat Tahera</span>.</h2>
+      <p class="muted small" style="margin-top:22px" data-reveal>Al-Dai al-Ajal Syedna Mohammed Burhanuddin RA states:</p>
+      <div class="prose" data-reveal><p>{{ about[1] }}</p></div>
+      <a class="link-arrow" href="{{ url_for('site.about') }}" data-reveal>Our story <svg><use href="#arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+{# Curriculum teaser — the full tree lives on the curriculum page #}
+<section class="sec sec-ink lattice-bg">
+  <div class="wrap split wide-left">
+    <div>
+      <div class="kick" data-reveal>Why Rawdat</div>
+      <h2 class="display" style="margin-top:26px" data-reveal>Learning<br>through <b class="gold-text">understanding.</b></h2>
+    </div>
+    <div data-reveal>
+      <p class="lead" style="color:rgba(243,236,218,.8)">{{ why[1] }}</p>
+      <div class="pillars">
+        {% for t in curriculum %}<a href="{{ url_for('site.curriculum') }}#{{ t.key }}"><span class="caps">{{ t.part }}</span><b>{{ t.title }}</b></a>{% endfor %}
+      </div>
+      <a class="btn btn-gold" href="{{ url_for('site.curriculum') }}">Grow the Tree of Knowledge</a>
+    </div>
+  </div>
+</section>
+
+{# 8 — a day at Rawdat, live #}
+<section class="sec">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:46px">
+      <div><div class="kick" data-reveal>A day at Rawdat</div><h2 class="h2" style="margin-top:18px" data-reveal>From the morning <b>Hifz</b> to the last bell.</h2></div>
+      <div class="now-pill" data-now data-reveal><i></i><span>Checking the time in Mumbai…</span></div>
+    </div>
+    <div class="day">
+      {% for a, b, t, ar, d in day %}
+      <div data-slot="{{ t }}" data-reveal style="--d:{{ loop.index0 }}"><time>{{ a }} — {{ b }}</time><h4>{{ t }}</h4><div class="ar">{{ ar }}</div><p>{{ d }}</p></div>
+      {% endfor %}
+    </div>
+    <p class="muted small" style="margin-top:22px">Class strength: 18–20 students · Additional languages: Hindi and Marathi.</p>
+  </div>
+</section>
+
+{# 9 — horizontal album rail #}
+<section class="scrolly rail-scene sec-paper2" aria-label="Events and happenings">
+  <div class="stage">
+    <div class="rail-head">
+      <div><div class="kick">Events & happenings</div><h2 class="h2" style="margin-top:16px">Learning that <b>leaves the classroom.</b></h2></div>
+      <a class="link-arrow" href="{{ url_for('site.gallery') }}">All 47 albums <svg><use href="#arrow"/></svg></a>
+    </div>
+    <div class="rail">
+      {% for a in albums %}
+      <a class="rail-card" href="{{ url_for('site.album', slug=a.slug) }}">
+        <div class="archw"><div class="arch"><img src="{{ a.cover|media }}" alt="{{ a.title }}" loading="lazy"></div></div>
+        <div class="meta"><span class="caps" style="color:var(--gold-deep)">{{ a.category }}</span><span class="caps muted">{{ a.date[:4] }}</span></div>
+        <h3 class="h3" style="margin-top:8px">{{ a.title }}</h3>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="rail-progress"></div>
+  </div>
+</section>
+
+{# 12 — newsletters + upcoming #}
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <div class="kick" data-reveal>Monthly newsletter</div>
+      <h2 class="h2" style="margin-top:18px" data-reveal>Every month, <b>in their words.</b></h2>
+      <p class="lead" data-reveal>Twelve issues, from May 2021 to December 2023, read right here, page by page.</p>
+      <a class="btn" href="{{ url_for('site.newsletters') }}" data-reveal>Read the newsletters</a>
+    </div>
+    <div class="fan">
+      {% for n in newsletters|reverse %}<a href="{{ url_for('site.newsletter', slug=n.slug) }}" style="--i:{{ loop.index0 }}" aria-label="{{ n.title }}"><img src="{{ n.pages[0]|media }}" alt="{{ n.title }} newsletter cover" loading="lazy"></a>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec-tight sec-paper2">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:24px">
+      <div><div class="kick">Coming up</div><h2 class="h2" style="margin-top:16px">On the calendar</h2></div>
+      <a class="link-arrow" href="{{ url_for('site.events') }}">Hijri & Gregorian calendar <svg><use href="#arrow"/></svg></a>
+    </div>
+    {% for e in upcoming %}
+    <div class="ev-row" data-reveal>
+      <div class="ev-date"><b>{{ e.day[8:10]|int }}</b><small>{{ e.day|nicedate('%b') }}</small><span class="ar">{{ e.day|hijri('ar') }}</span></div>
+      <div><h4 class="h3">{{ e.title }}</h4><p class="muted small" style="margin:4px 0 0">{{ e.description }}</p></div>
+      <div>{% if e.demo %}<span class="tag demo">Sample</span>{% else %}<span class="tag">{{ e.category }}</span>{% endif %}</div>
+    </div>
+    {% else %}<p class="muted">New events will appear here.</p>{% endfor %}
+  </div>
+</section>
+
+{# 13 — admissions CTA with live eligibility #}
+<section class="sec sec-ink lattice-bg">
+  <div class="wrap split">
+    <div>
+      {% set ay = today.year if today.month < 6 else today.year + 1 %}<div class="kick">Admissions {{ ay }}–{{ '%02d'|format((ay+1) % 100) }}</div>
+      <h2 class="display" style="margin-top:22px">Begin at <b class="gold-text">four.</b></h2>
+      <p class="lead" style="color:rgba(243,236,218,.75)">Admission at Junior KG is based on age as on 1st June: four years and above. Enter a date of birth to see the right class.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+        <a class="btn btn-gold" href="{{ url_for('site.admissions') }}#enquire">Enquire now</a>
+        <a class="btn btn-line" href="{{ url_for('site.track') }}">Track an application</a>
+      </div>
+    </div>
+    <div class="card" style="background:rgba(255,255,255,.04);border-color:rgba(243,236,218,.16);color:#f3ecda">
+      <form class="form" data-elig>
+        <div class="grid g2">
+          <div class="field"><label style="color:rgba(243,236,218,.7)">Child’s date of birth</label><input type="date" name="dob" required></div>
+          <div class="field"><label style="color:rgba(243,236,218,.7)">Academic year</label>
+            <select name="year">{% set y0 = today.year if today.month < 6 else today.year + 1 %}{% for y in [y0, y0+1] %}<option value="{{ y }}">{{ y }}–{{ '%02d'|format((y+1) % 100) }}</option>{% endfor %}</select></div>
+        </div>
+      </form>
+      <div class="elig-out" data-elig-out><p class="muted" style="margin:0">Your child’s class will appear here.</p></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Curriculum{% endblock %}
+{% block main %}
+{{ phero('Curriculum', 'The Tree of<br><b>Knowledge.</b>', 'المنهج', 'Al-Quran al-Kareem is the pivot around which the curriculum revolves. A central idea drawn from al-Quran connects every discipline into one bigger picture.') }}
+
+<div class="wrap" style="margin-bottom:10px"><p class="ar" style="font-size:clamp(24px,2.6vw,36px);color:var(--gold-deep);margin:0">{{ ayah.ar }}</p><p class="muted">{{ ayah.en }} {{ ayah.ref }}</p></div>
+
+{% include 'partials/tree.html' %}
+
+<section class="sec sec-paper2">
+  <div class="wrap">
+    <div class="kick" data-reveal>At a glance</div>
+    <h2 class="h2" style="margin:16px 0 36px" data-reveal>Everything we teach</h2>
+    <div class="grid g3">
+      {% for t in tree %}
+      <div class="card" data-reveal style="--d:{{ loop.index0 % 3 }}">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span class="caps" style="color:var(--gold-deep)">{{ t.part }}</span><span class="ar" style="font-size:18px;color:var(--ink-3)">{{ t.ar }}</span></div>
+        <h3 class="h3" style="margin:10px 0 14px">{{ t.title }}</h3>
+        <ul style="margin:0;padding-left:18px;color:var(--ink-2);font-size:14.5px;line-height:1.9">{% for i in t['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <div>
+      <div class="kick" data-reveal>Other information</div>
+      <dl class="facts" data-reveal>
+        {% for k, v in other %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
+      </dl>
+    </div>
+    <div>
+      <div class="kick" data-reveal>A day at Rawdat</div>
+      <div class="now-pill" data-now style="margin:18px 0 26px"><i></i><span>Checking the time in Mumbai…</span></div>
+      <div class="day" style="grid-template-columns:1fr 1fr">
+        {% for a, b, t, ar, d in day %}<div data-slot="{{ t }}" data-reveal style="--d:{{ loop.index0 }}"><time>{{ a }} — {{ b }}</time><h4>{{ t }}</h4><div class="ar">{{ ar }}</div><p>{{ d }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if ex.curriculum %}
+<section class="sec-tight sec-paper2">
+  <div class="wrap">
+    <div class="kick" data-reveal>Inside the classroom</div>
+    <div class="masonry" style="margin-top:26px" data-lb-group="Curriculum">
+      {% for img in ex.curriculum %}<a href="{{ img|media }}" data-lb data-reveal="fade"><img src="{{ img|media }}" alt="Curriculum {{ loop.index }}" loading="lazy"></a>{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

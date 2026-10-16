@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Family portal{% endblock %}
+{% block main %}
+<div style="height:var(--hdr-h)"></div>
+{% include 'portal/_bar.html' %}
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="kick">Your children</div>
+    <h1 class="h1" style="margin:16px 0 36px">Assalamu alaikum, <b>{{ user.name.split()[0] }}.</b></h1>
+    <div class="grid g2">
+      {% for x in cards %}
+      <a class="card" href="{{ url_for('portal.child', cid=x.c.id) }}" style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center" data-reveal>
+        {% set r = 52 %}{% set circ = 2 * 3.14159 * r %}
+        <div class="ring" style="width:130px"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="{{ r }}" fill="none" stroke="var(--line)" stroke-width="6"/><circle cx="60" cy="60" r="{{ r }}" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="{{ circ }}" stroke-dashoffset="{{ circ * (1 - x.h.pct/100) }}"/></svg><div class="c"><div><b style="font-size:24px;font-weight:300">{{ x.h.pct }}%</b><br><span class="caps muted" style="font-size:8.5px">of the Quran</span></div></div></div>
+        <div>
+          <h2 class="h3">{{ x.c.name }}</h2>
+          <div class="caps muted" style="margin-top:4px">{{ class_by_slug[x.c.class_slug].label }} · <span class="ar" style="font-size:14px">{{ class_by_slug[x.c.class_slug].ar }}</span></div>
+          <p class="small" style="margin:12px 0 0">{{ x.h.juz_complete }} juz complete · {{ x.h.streak }}-day streak</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

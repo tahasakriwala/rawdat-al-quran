@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Teacher’s desk{% endblock %}
+{% block main %}
+<div style="height:var(--hdr-h)"></div>
+{% include 'portal/_bar.html' %}
+{% set cl = class_by_slug[cls] %}
+<section class="sec-tight" style="padding-top:clamp(28px,4vw,48px)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <div><div class="kick">{{ cl.label }} · {{ cl.name }}</div><h1 class="h1" style="margin-top:14px">Teacher’s <b>desk</b></h1></div>
+      <div class="ar" style="font-size:40px;color:var(--gold-deep)">{{ cl.ar }}</div>
+    </div>
+
+    <div class="dash">
+      <form class="card span-8" method="post" action="{{ url_for('portal.attendance') }}">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div><div class="caps muted">Register & Hifz overview</div><h2 class="h3" style="margin-top:6px">{{ roster|length }} students</h2></div>
+          <div style="display:flex;gap:8px;align-items:center"><input type="date" name="day" value="{{ day }}" onchange="location='?day='+this.value" style="height:36px;border:1px solid var(--line-2);background:var(--paper);color:var(--ink);padding:0 8px"><button class="btn btn-sm">Save register</button></div>
+        </div>
+        <div style="overflow-x:auto;margin-top:14px">
+        <table class="reg">
+          <thead><tr><th>Student</th><th>Present · Absent · Leave</th><th>Hifz</th><th>Last sabaq</th></tr></thead>
+          <tbody>
+          {% for r in roster %}
+            <tr id="c{{ r.c.id }}">
+              <td><a href="{{ url_for('portal.child', cid=r.c.id) }}"><b style="font-weight:600">{{ r.c.name }}</b></a></td>
+              <td><span class="pa">{% for s in ['P','A','L'] %}<input type="radio" id="s{{ r.c.id }}{{ s }}" name="s{{ r.c.id }}" value="{{ s }}" {{ 'checked' if (r.status or 'P') == s }}><label for="s{{ r.c.id }}{{ s }}">{{ s }}</label>{% endfor %}</span></td>
+              <td style="min-width:140px"><div class="small">{{ r.h.pct }}% · {{ r.h.juz_complete }} juz</div><div class="bar" style="margin-top:6px;--w:{{ r.h.pct }}%"><i></i></div></td>
+              <td class="small muted">{% if r.last %}p. {{ r.last.page_to }} · {{ r.last.day|nicedate('%-d %b') }}{% endif %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        </div>
+      </form>
+
+      <form class="card span-4 form" method="post" action="{{ url_for('portal.log') }}" style="align-content:start">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <div><div class="caps muted">Record tasmee’</div><h2 class="h3" style="margin-top:6px">Log a recitation</h2></div>
+        <div class="field"><label>Student</label><select name="child_id">{% for r in roster %}<option value="{{ r.c.id }}">{{ r.c.name }}{% if r.last %} — next p. {{ r.last.page_to + 1 }}{% endif %}</option>{% endfor %}</select></div>
+        <div class="field"><label>Type</label><div class="seg" style="grid-template-columns:repeat(3,1fr)">
+          {% for k, l in [('sabaq','Sabaq'),('sabaq_para','Sabaq para'),('dhor','Dhor')] %}<label style="display:contents"><input type="radio" name="kind" value="{{ k }}" {{ 'checked' if loop.first }} hidden><span class="segopt">{{ l }}</span></label>{% endfor %}
+        </div></div>
+        <div class="field"><label>Surah (sets the start page)</label><select onchange="this.form.page_from.value=this.value;this.form.page_to.value=this.value"><option value="">—</option>{% for s in surahs %}<option value="{{ s.page }}">{{ s.n }}. {{ s.en }} · {{ s.ar }}</option>{% endfor %}</select></div>
+        <div class="grid g2"><div class="field"><label>From page</label><input type="number" name="page_from" min="1" max="604" required></div><div class="field"><label>To page</label><input type="number" name="page_to" min="1" max="604" required></div></div>
+        <div class="grid g2"><div class="field"><label>Mistakes</label><input type="number" name="mistakes" min="0" value="0"></div><div class="field"><label>Grade</label><select name="grade">{% for g in grades %}<option>{{ g }}</option>{% endfor %}</select></div></div>
+        <div class="field"><label>Note for parents</label><input name="note" maxlength="300"></div>
+        <input type="hidden" name="day" value="{{ day }}">
+        <button class="btn">Save</button>
+      </form>
+
+      <div class="card span-6">
+        <div class="caps muted">Leave requests</div>
+        <h2 class="h3" style="margin:6px 0 10px">Awaiting you</h2>
+        {% for l in leaves %}
+        <div class="log-row" style="grid-template-columns:1fr auto">
+          <div><b style="font-weight:600">{{ l.name }}</b><div class="small muted">{{ l.from_day|nicedate('%-d %b') }} – {{ l.to_day|nicedate('%-d %b') }} · {{ l.reason }}</div></div>
+          <form method="post" action="{{ url_for('portal.leave_decide', lid=l.id) }}" style="display:flex;gap:6px"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="chip" name="ok" value="1">Approve</button><button class="chip" name="ok" value="0">Decline</button></form>
+        </div>
+        {% else %}<p class="muted">No pending requests.</p>{% endfor %}
+      </div>
+
+      <form class="card span-6 form" method="post" action="{{ url_for('portal.announce') }}">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <div><div class="caps muted">Notice to {{ cl.label }} families</div><h2 class="h3" style="margin-top:6px">Post an announcement</h2></div>
+        <div class="field"><label>Title</label><input name="title" required maxlength="160"></div>
+        <div class="field"><label>Message</label><textarea name="body" required></textarea></div>
+        <label class="small"><input type="checkbox" name="pinned"> Pin to top</label>
+        <button class="btn">Publish</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

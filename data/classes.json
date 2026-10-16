@@ -1,0 +1,86 @@
+[
+ {
+  "slug": "jkg",
+  "label": "JKG",
+  "name": "al-Tamheedi",
+  "ar": "التمهيدي",
+  "phase": "Pre-Primary"
+ },
+ {
+  "slug": "skg",
+  "label": "SKG",
+  "name": "al-Ebtedaee",
+  "ar": "الابتدائي",
+  "phase": "Pre-Primary"
+ },
+ {
+  "slug": "grade1",
+  "label": "Grade 1",
+  "name": "al-Awwalah",
+  "ar": "الأولى",
+  "phase": "Primary"
+ },
+ {
+  "slug": "grade2",
+  "label": "Grade 2",
+  "name": "al-Saniyah",
+  "ar": "الثانية",
+  "phase": "Primary"
+ },
+ {
+  "slug": "grade3",
+  "label": "Grade 3",
+  "name": "al-Salesah",
+  "ar": "الثالثة",
+  "phase": "Primary"
+ },
+ {
+  "slug": "grade4",
+  "label": "Grade 4",
+  "name": "al-Rabeah",
+  "ar": "الرابعة",
+  "phase": "Primary"
+ },
+ {
+  "slug": "grade5",
+  "label": "Grade 5",
+  "name": "al-Khamesah",
+  "ar": "الخامسة",
+  "phase": "Lower Secondary"
+ },
+ {
+  "slug": "grade6",
+  "label": "Grade 6",
+  "name": "al-Sadesah",
+  "ar": "السادسة",
+  "phase": "Lower Secondary"
+ },
+ {
+  "slug": "grade7",
+  "label": "Grade 7",
+  "name": "al-Sabeah",
+  "ar": "السابعة",
+  "phase": "Lower Secondary"
+ },
+ {
+  "slug": "grade8",
+  "label": "Grade 8",
+  "name": "al-Samenah",
+  "ar": "الثامنة",
+  "phase": "Secondary"
+ },
+ {
+  "slug": "grade9",
+  "label": "Grade 9",
+  "name": "al-Taseah",
+  "ar": "التاسعة",
+  "phase": "Secondary"
+ },
+ {
+  "slug": "grade10",
+  "label": "Grade 10",
+  "name": "al-Asherah",
+  "ar": "العاشرة",
+  "phase": "Secondary"
+ }
+]

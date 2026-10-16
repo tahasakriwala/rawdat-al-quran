@@ -1,0 +1,20 @@
+{% macro phero(kicker, title, ar='', lead='', crumb=None) -%}
+<section class="phero">
+  {% if ar %}<div class="ar-bg" aria-hidden="true">{{ ar }}</div>{% endif %}
+  <div class="wrap">
+    <div class="crumbs"><a href="{{ url_for('site.home') }}">Home</a><span>/</span>{% if crumb %}<a href="{{ crumb[1] }}">{{ crumb[0] }}</a><span>/</span>{% endif %}<span>{{ kicker }}</span></div>
+    <h1 class="h1">{{ title|safe }}</h1>
+    {% if ar %}<div class="ar" style="font-size:clamp(22px,2.4vw,32px);color:var(--gold-deep);margin-top:10px;text-align:left">{{ ar }}</div>{% endif %}
+    {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro orn(cls='') -%}<div class="orn {{ cls }}"><i></i><svg><use href="#khatam"/></svg><i></i></div>{%- endmacro %}
+
+{% macro person(p, role=None) -%}
+<div class="person" data-name="{{ p.name }}">
+  <div class="ph">{% if p.photo %}<img src="{{ p.photo|media }}" alt="{{ p.name }}" loading="lazy">{% else %}<span class="ini">{{ p.name|initials }}</span>{% endif %}</div>
+  <h4>{{ p.name }}</h4>{% if role or p.role %}<div class="role">{{ role or p.role }}</div>{% endif %}
+</div>
+{%- endmacro %}

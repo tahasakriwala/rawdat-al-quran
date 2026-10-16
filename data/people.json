@@ -1,0 +1,358 @@
+{
+ "principal": {
+  "name": "Mehlam BS Burhani",
+  "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mehlam-BS-Burhani.jpg",
+  "role": "Principal"
+ },
+ "hods": [
+  {
+   "name": "Shk Mufaddal Badri",
+   "role": "Secondary Coordinator",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mufaddal-Badri.jpg"
+  },
+  {
+   "name": "Shk Murtaza Master",
+   "role": "Lower Secondary Coordinator",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Murtaza-Master.jpg"
+  },
+  {
+   "name": "M Murtaza Stationerywala",
+   "role": "Primary Coordinator",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Murtaza-Stationarywala.jpg"
+  },
+  {
+   "name": "Shk Ammar al-Harazi",
+   "role": "Pre-Primary Coordinator",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Ammar-Nasr.jpg"
+  },
+  {
+   "name": "Ms Sakina Hamid",
+   "role": "Pre-Primary Coordinator",
+   "photo": ""
+  },
+  {
+   "name": "M Abdulqadir Hajisaheb",
+   "role": "Tahfeez Coordinator",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Abdulqadir-Haji.jpg"
+  },
+  {
+   "name": "Shk Murtaza Madha",
+   "role": "Admin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Murtaza-Madha.jpg"
+  },
+  {
+   "name": "Ms Fatema Bhagat",
+   "role": "HR",
+   "photo": ""
+  },
+  {
+   "name": "Husain BS Husain",
+   "role": "",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Husain-BS-Husain.jpg"
+  }
+ ],
+ "male": [
+  {
+   "name": "Shk Murtaza Ghadiyali",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Murtaza-Ghadiyali.jpg"
+  },
+  {
+   "name": "Shk Husain Topiwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Husain-Topiwala.jpg"
+  },
+  {
+   "name": "Shk Mufaddal Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mufaddal-Udaipurwala.jpg"
+  },
+  {
+   "name": "Shk Mohammed Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mohammed-Hamid.jpg"
+  },
+  {
+   "name": "Shk Huzaifa Najmi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Huzaifa-Najmi.jpg"
+  },
+  {
+   "name": "Shk Mustafa Talib",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mustafa-Talib.jpg"
+  },
+  {
+   "name": "M Aliasger Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Aliasgar-Hamid.jpg"
+  },
+  {
+   "name": "M Abdulqadir Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Abdulqadir-Badri.jpg"
+  },
+  {
+   "name": "M Murtaza Rupawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Murtaza-Rupawala.jpg"
+  },
+  {
+   "name": "M Huzaifa Tinwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Huzaifa-Tinwala.jpg"
+  },
+  {
+   "name": "M Idris Tinwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Idris-Tinwala.jpg"
+  },
+  {
+   "name": "Mr Swapnil Kamble",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Swapnil-Kamble.jpg"
+  },
+  {
+   "name": "Mr Mohammed Shaikh",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mohammed-Shaikh.jpg"
+  },
+  {
+   "name": "M Mohammed Husain",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mohammed-Husain.jpg"
+  },
+  {
+   "name": "M Mufaddal Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mufaddal-Kanchwala.jpg"
+  },
+  {
+   "name": "M Burhanuddin Bandeali",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Burhanuddin-Bandeali.jpg"
+  },
+  {
+   "name": "M Aliasgar Kheriwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Aliasgar-Kheriwala.jpg"
+  },
+  {
+   "name": "M Murtaza Ratlamwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Murtaza-Ratlamwala.jpg"
+  },
+  {
+   "name": "M Ubai Jamdar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Ubai-Jamdar.jpg"
+  },
+  {
+   "name": "M Qutubkhan Hamid",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Qutubkhan-Bhopalwala.jpg"
+  },
+  {
+   "name": "M Shoaib Patanwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Shoaib-Patanwala.jpg"
+  },
+  {
+   "name": "M Hamza Rasheed",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Hamza-Rasheed.jpg"
+  },
+  {
+   "name": "M Husain Qassamnath",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mohammed-Kassamnath.jpg"
+  },
+  {
+   "name": "Qasim Mansoor",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Qasim-Mansoor.jpg"
+  },
+  {
+   "name": "Abdeali Bazarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Abdeali-Bazar.jpg"
+  },
+  {
+   "name": "Mustafa Rajgarhwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mustafa-Rajgarhwala.jpg"
+  },
+  {
+   "name": "Abbas Gandhi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Abbas-Gandhi.jpg"
+  },
+  {
+   "name": "Taher Tarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Taher-Tarwala.jpg"
+  },
+  {
+   "name": "Mohammed Gulzar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mohammed-Gulzar-2.jpg"
+  },
+  {
+   "name": "Husain Nadir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Husain-Nadir.jpg"
+  },
+  {
+   "name": "Mehlam Raja",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2026/08/Mehlam-Raja.jpg"
+  }
+ ],
+ "female": [
+  {
+   "name": "Ms Tasneem Burhani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Tasneem Bootwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Maria Bahrainwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Jumana Harnesswala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Alefiyah Dholkawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Tasneem Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Yaquta Badri",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Ruqaiyah Yamani",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Ajab Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Nisreen Amin",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Arwa Sakarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Tasneem Ezzi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Kanchwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Jumana Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Maimoon",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Jagmag",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Rashida Mahableshwarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sarrah Haidermota",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Sheth",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Kapasi",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Tinwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Amreliwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Tinwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sakina Sadriwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Jumana Pipwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sarrah Kheriwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Shehrebanu Sakarwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Mubaraka Ringwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Khadija Sadriwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Arpita Khanolkar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sakina Malik",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Shakir",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Dalal",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sakina Mukhtiar",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Fatema Kapadia",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sara Ansari",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Bootwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sakina Kudrati",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Zainab Master",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Batul Chitalwala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Insiyah Vohra",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Tasneem Patrawala",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  },
+  {
+   "name": "Ms Sarrah Zaini",
+   "photo": "https://rawdatalquran.com/wp-content/uploads/2018/11/woman-placeholder.jpg"
+  }
+ ]
+}

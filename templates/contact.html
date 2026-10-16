@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Visit & contact{% endblock %}
+{% block main %}
+{{ phero('Visit', 'Come and <b>see us.</b>', 'زيارة', 'Khatau Mansion on Warden Road, Mumbai — a few minutes from Rawdat Tahera.') }}
+<section style="padding-bottom:clamp(60px,8vw,110px)">
+  <div class="wrap split" style="align-items:start">
+    <div>
+      <div class="card">
+        <div class="kick">Rawdat al-Quran al-Kareem</div>
+        <p style="font-size:20px;font-weight:300;letter-spacing:-.02em;line-height:1.5;margin:16px 0">{% for l in school.address %}{{ l }}<br>{% endfor %}</p>
+        <p style="margin:0">Tel <a href="tel:{{ school.phone_href }}"><b>{{ school.phone }}</b></a></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+          <a class="btn btn-sm" href="{{ school.map_link }}" target="_blank" rel="noopener">Directions ↗</a>
+          <a class="btn btn-line btn-sm" href="tel:{{ school.phone_href }}">Call</a>
+        </div>
+      </div>
+      <div class="map" style="margin-top:18px"><iframe src="{{ school.map_embed }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Rawdat al-Quran al-Kareem"></iframe></div>
+      <div class="note" style="margin-top:18px">School time 8:30 am – 3:10 pm · Morning Hifz class from 7:30 am · Sundays closed</div>
+    </div>
+    <form class="form card" method="post" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <div class="kick">Write to us</div>
+      {% if sent %}<div class="note ok">Thank you — your message has reached the school office.</div>{% endif %}
+      {% for n, l, t in [('name','Your name','text'),('email','Email','email'),('subject','Subject','text')] %}
+      <div class="field {{ 'bad' if errors.get(n) }}"><label for="c-{{ n }}">{{ l }}</label><input id="c-{{ n }}" name="{{ n }}" type="{{ t }}" value="{{ form.get(n,'') }}">{% if errors.get(n) %}<span class="err">{{ errors[n] }}</span>{% endif %}</div>
+      {% endfor %}
+      <div class="field {{ 'bad' if errors.get('message') }}"><label for="c-m">Message</label><textarea id="c-m" name="message">{{ form.get('message','') }}</textarea>{% if errors.get('message') %}<span class="err">{{ errors['message'] }}</span>{% endif %}</div>
+      <button class="btn">Send message</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{# Kalemah Tayyebah tree (14:24). Roots → trunk → branches → leaves → blossoms → fruit, drawn by scroll. #}
+<section class="scrolly tree-scene" aria-label="The Tree of Knowledge — our curriculum">
+  <div class="stage">
+    <svg class="tree-svg" viewBox="0 0 400 520" role="img" aria-label="A tree whose roots are Tahfeez al-Quran and whose branches are every other subject">
+      <defs>
+        <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#8a6a22"/><stop offset=".45" stop-color="#e9d08a"/><stop offset="1" stop-color="#a98330"/></linearGradient>
+      </defs>
+      <path d="M40 400 H360" stroke="var(--line-2)" stroke-width="1" />
+      <g stroke="url(#gl)" stroke-width="1.6" style="--a:0;--b:.17">
+        <path class="draw" d="M200 400 C195 430 170 452 138 492"/><path class="draw" d="M200 400 C206 436 236 456 266 496"/>
+        <path class="draw" d="M200 400 C200 440 198 472 200 508"/><path class="draw" d="M200 400 C184 420 140 426 96 452"/>
+        <path class="draw" d="M200 400 C216 420 262 426 306 454"/><path class="draw" d="M168 446 C160 462 150 470 132 474"/><path class="draw" d="M236 450 C246 466 258 472 276 474"/>
+      </g>
+      <g stroke="var(--accent)" stroke-width="2.2" style="--a:.15;--b:.33">
+        <path class="draw" d="M191 400 C193 344 187 292 196 228"/><path class="draw" d="M209 400 C207 344 213 292 204 228"/>
+        <path class="draw" d="M200 396 C201 340 199 290 200 232" stroke-width="1" opacity=".5"/>
+      </g>
+      <g stroke="var(--accent)" stroke-width="1.6" style="--a:.31;--b:.5">
+        <path class="draw" d="M198 300 C168 272 128 252 88 206"/><path class="draw" d="M202 292 C236 262 272 240 312 190"/>
+        <path class="draw" d="M198 242 C178 192 160 150 138 100"/><path class="draw" d="M202 242 C222 192 244 150 266 100"/>
+        <path class="draw" d="M200 234 C200 180 200 122 200 58"/><path class="draw" d="M198 334 C160 324 118 304 66 292"/>
+        <path class="draw" d="M202 326 C242 314 282 294 334 282"/><path class="draw" d="M150 266 C134 240 126 224 118 200"/><path class="draw" d="M252 260 C268 236 276 222 286 196"/>
+      </g>
+      {% set leaves = [(88,206),(312,190),(138,100),(266,100),(200,58),(66,292),(334,282),(118,200),(286,196),(160,150),(240,150),(110,250),(292,240)] %}
+      {% for x, y in leaves %}
+      <g class="node" data-at="3" style="transition-delay:{{ loop.index0*45 }}ms"><ellipse cx="{{ x }}" cy="{{ y }}" rx="15" ry="8" transform="rotate({{ -35 if x < 200 else 35 }} {{ x }} {{ y }})" fill="color-mix(in srgb, var(--accent) 30%, transparent)" stroke="var(--accent)" stroke-width=".8"/></g>
+      {% endfor %}
+      {% for x, y in [(100,186),(300,172),(150,86),(252,86),(214,52),(80,276),(320,266)] %}
+      <g class="node" data-at="4" style="transition-delay:{{ loop.index0*60 }}ms"><use href="#khatam" x="{{ x-8 }}" y="{{ y-8 }}" width="16" height="16" style="color:var(--gold)"/></g>
+      {% endfor %}
+      {% for x, y in [(96,224),(304,208),(146,118),(258,118),(190,74),(74,306),(326,298),(128,214),(276,212)] %}
+      <g class="node" data-at="5" style="transition-delay:{{ loop.index0*60 }}ms"><circle cx="{{ x }}" cy="{{ y }}" r="6.5" fill="url(#gl)"/></g>
+      {% endfor %}
+      <g class="node" data-at="0"><text x="200" y="516" text-anchor="middle">Roots · Tahfeez</text></g>
+      <g class="node" data-at="1"><text x="222" y="380">Trunk</text><text x="222" y="364" class="ar-t" text-anchor="start">العربية</text></g>
+      <g class="node" data-at="2"><text x="340" y="300">Branches</text></g>
+      <g class="node" data-at="0"><text x="200" y="30" text-anchor="middle" class="ar-t" style="font-size:18px">كَشَجَرَةٍ طَيِّبَةٍ</text></g>
+    </svg>
+    <div>
+      <div class="kick">The Tree of Knowledge</div>
+      <div class="tier-list">
+        {% for t in tree %}
+        <div class="tier" id="{{ t.key }}">
+          <div class="part"><span class="caps muted">{{ '%02d'|format(loop.index) }} · {{ t.part }}</span><span class="ar">{{ t.part_ar }}</span></div>
+          <h3 class="h2" style="margin-top:12px">{{ t.title }}</h3>
+          <div class="ar" style="font-size:24px;color:var(--ink-3);margin-top:4px">{{ t.ar }}</div>
+          <p class="lead" style="margin:14px 0 0">{{ t.blurb }}</p>
+          <ul>{% for i in t['items'] %}<li>{{ i }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="tier-prog">{% for t in tree %}<i></i>{% endfor %}</div>
+    </div>
+  </div>
+</section>

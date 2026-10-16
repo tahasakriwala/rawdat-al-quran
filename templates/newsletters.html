@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Newsletters{% endblock %}
+{% block main %}
+{{ phero('Newsletters', 'The monthly <b>newsletter.</b>', 'النشرة الشهرية', 'Read every issue page by page, here on the site.') }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap">
+    {% for year, group in items|groupby('year')|reverse %}
+    <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line-2);padding-bottom:10px;margin:{{ '0' if loop.first else '56px' }} 0 28px"><h2 class="h3">{{ year }}</h2><span class="caps muted">{{ group|length }} issues</span></div>
+    <div class="grid g4">
+      {% for n in group %}
+      <a class="nl" href="{{ url_for('site.newsletter', slug=n.slug) }}" data-reveal style="--d:{{ loop.index0 % 4 }}">
+        <div class="nl-cover"><img src="{{ n.pages[0]|media }}" alt="{{ n.title }} cover" loading="lazy"></div>
+        <h3 class="h3" style="margin-top:14px;font-size:18px">{{ n.title }}</h3><span class="caps muted">{{ n.pages|length }} pages</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

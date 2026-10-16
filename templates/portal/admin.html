@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}School office{% endblock %}
+{% block main %}
+<div style="height:var(--hdr-h)"></div>
+{% include 'portal/_bar.html' %}
+<section class="sec-tight" style="padding-top:clamp(28px,4vw,48px)">
+  <div class="wrap">
+    <div class="kick">Admissions & office</div>
+    <h1 class="h1" style="margin:14px 0 28px">School <b>office</b></h1>
+    <div class="grid g4" style="margin-bottom:18px">
+      <div class="card stat"><div class="v">{{ stats.enq }}</div><div class="l">Enquiries</div></div>
+      <div class="card stat"><div class="v gold-text">{{ stats.new }}</div><div class="l">New, unanswered</div></div>
+      <div class="card stat"><div class="v">{{ stats.unread }}</div><div class="l">Unread messages</div></div>
+      <div class="card stat"><div class="v">{{ stats.families }}</div><div class="l">Portal families</div></div>
+    </div>
+
+    <div class="card" id="pipeline" style="margin-bottom:18px">
+      <div class="caps muted">Admissions pipeline</div>
+      <h2 class="h3" style="margin:6px 0 16px">Every enquiry, by stage</h2>
+      <div class="kanban">
+        {% for k, label, items in cols %}
+        <div class="kcol"><h5><span>{{ label }}</span><span class="muted">{{ items|length }}</span></h5>
+          {% for e in items %}
+          <form class="kcard" method="post" action="{{ url_for('portal.enquiry_update', eid=e.id) }}">
+            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <b>{{ e.child_name }}</b> <span class="muted small">· {{ class_by_slug[e.class_slug].label if e.class_slug in class_by_slug else '' }}</span>
+            <div class="small muted">{{ e.parent_name }} · {{ e.phone }}<br>{{ e.email }}<br>DOB {{ e.dob }} · {{ e.ref }}</div>
+            {% if e.message %}<div class="small" style="margin-top:6px">“{{ e.message|truncate(90) }}”</div>{% endif %}
+            <select name="status" onchange="this.form.submit()">{% for k2, l2 in [('received','Enquiry received'),('kit','Admission Kit shared'),('applied','Application submitted'),('interaction','Interaction scheduled'),('decision','Decision pending'),('offered','Admission granted'),('confirmed','Seat confirmed'),('waitlist','Waitlisted'),('declined','Not offered')] %}<option value="{{ k2 }}" {{ 'selected' if e.status == k2 }}>{{ l2 }}</option>{% endfor %}</select>
+          </form>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+      <p class="muted small">Moving a card updates what the family sees on the public “Track your application” page.</p>
+    </div>
+
+    <div class="dash">
+      <div class="card span-6" id="inbox">
+        <div class="caps muted">Contact form</div><h2 class="h3" style="margin:6px 0 10px">Inbox</h2>
+        {% for m in msgs %}
+        <div style="padding:12px 0;border-bottom:1px solid var(--line);{{ 'opacity:.55' if m.is_read }}">
+          <div style="display:flex;justify-content:space-between;gap:10px"><b style="font-weight:600">{{ m.subject or '(no subject)' }}</b><span class="small muted">{{ m.created|nicedate('%-d %b') }}</span></div>
+          <div class="small muted">{{ m.name }} · <a href="mailto:{{ m.email }}">{{ m.email }}</a></div>
+          <p class="small" style="margin:6px 0">{{ m.message }}</p>
+          {% if not m.is_read %}<form method="post" action="{{ url_for('portal.message_read', mid=m.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="chip">Mark read</button></form>{% endif %}
+        </div>
+        {% else %}<p class="muted">No messages yet.</p>{% endfor %}
+      </div>
+
+      <div class="span-6 grid" style="gap:18px">
+        <form class="card form" method="post" action="{{ url_for('portal.announce') }}" id="announcements">
+          <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+          <div><div class="caps muted">Announcements</div><h2 class="h3" style="margin-top:6px">Publish a notice</h2></div>
+          <div class="grid g2"><div class="field"><label>Audience</label><select name="class_slug"><option value="all">Whole school</option>{% for c in classes %}<option value="{{ c.slug }}">{{ c.label }}</option>{% endfor %}</select></div><div class="field"><label>Title</label><input name="title" required></div></div>
+          <div class="field"><label>Message</label><textarea name="body" required></textarea></div>
+          <label class="small"><input type="checkbox" name="pinned"> Pin to top</label>
+          <button class="btn">Publish</button>
+          {% for a in ann[:6] %}<div class="log-row" style="grid-template-columns:1fr auto"><span class="small"><b>{{ a.title }}</b> · {{ 'All' if a.class_slug=='all' else class_by_slug[a.class_slug].label }}{% if a.demo %} <span class="tag demo">Sample</span>{% endif %}</span>
+            <button class="chip" formaction="{{ url_for('portal.announcement_delete', aid=a.id) }}" formnovalidate onclick="return confirm('Delete this announcement?')">Delete</button></div>{% endfor %}
+        </form>
+
+        <form class="card form" method="post" action="{{ url_for('portal.event_add') }}" id="events">
+          <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+          <div><div class="caps muted">Calendar</div><h2 class="h3" style="margin-top:6px">Add an event</h2></div>
+          <div class="grid g2"><div class="field"><label>Title</label><input name="title" required></div><div class="field"><label>Date</label><input type="date" name="day" required></div></div>
+          <div class="grid g2"><div class="field"><label>Category</label><input name="category" placeholder="e.g. Deen & Khidmat"></div><div class="field"><label>Description</label><input name="description"></div></div>
+          <button class="btn">Add to calendar</button>
+          {% for e in ev[:6] %}<div class="log-row" style="grid-template-columns:90px 1fr"><span class="small muted">{{ e.day|nicedate('%-d %b') }}</span><span class="small">{{ e.title }}{% if e.demo %} <span class="tag demo">Sample</span>{% endif %}</span></div>{% endfor %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

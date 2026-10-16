@@ -1,0 +1,178 @@
+<!doctype html>
+{%- set ep = request.endpoint or '' -%}
+{%- set wordmark = 'https://rawdatalquran.com/wp-content/uploads/2026/08/RQK3.png' -%}
+<html lang="en" data-theme="rawdat">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% block title %}{{ school.name }}{% endblock %} · روضة القرآن الكريم</title>
+<meta name="description" content="{% block desc %}Rawdat al-Quran al-Kareem, Mumbai — a Quran-centred school by Mahad al-Zahra, Aljamea-tus-Saifiyah, for children aged four and above.{% endblock %}">
+<meta name="theme-color" content="#0c3c39">
+<link rel="manifest" href="{{ url_for('site.manifest') }}">
+<link rel="icon" href="{{ url_for('static', filename='img/icon-192.png') }}">
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='img/icon-512.png') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="{{ url_for('static', filename='fonts/Kanz-al-Marjaan.ttf') }}" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<style>:root{--wm:url("{{ wordmark|media }}")}</style>
+<script>
+  (function(){try{var t=localStorage.getItem('rq-theme'),m=localStorage.getItem('rq-mode');
+    if(t)document.documentElement.dataset.theme=t;
+    if(m==='dark'||(m!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.mode='dark';
+    if(sessionStorage.getItem('rq-seen'))document.documentElement.classList.add('seen');}catch(e){}})();
+</script>
+{% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="khatam" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5" y="5" width="14" height="14"/><rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)"/><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M3 12h17m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></g></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M3 8h18M3 16h18" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-look" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/></g></symbol>
+  <symbol id="user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 21V10.5C4 7 7 4.5 9.7 3.4L12 2l2.3 1.4C17 4.5 20 7 20 10.5V21z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-learn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21V9M12 9c-2-3-5-4-8-3v12c3-1 6 0 8 3 2-3 5-4 8-3V6c-3-1-6 0-8 3z"/></g></symbol>
+  <symbol id="i-media" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14"/><path d="m3 16 5-5 4 4 3-3 6 6"/><circle cx="16" cy="9" r="1.5"/></g></symbol>
+  <symbol id="i-admit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5M14 3v5h5"/></g></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+  <symbol id="pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+</svg>
+
+<div id="loader" aria-hidden="true"><div class="ld"><img src="{{ logo_mark }}" alt=""><div class="ld-line"></div><div class="ld-name">Rawdat al-Quran al-Kareem</div></div></div>
+<div id="nav-bar"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="{{ url_for('site.home') }}" aria-label="Rawdat al-Quran al-Kareem — home">
+      <img src="{{ logo_mark }}" alt="">
+      <span class="brand-t"><b>Rawdat al-Quran</b><span class="ar">روضة القرآن الكريم</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <div><a class="nav-a {{ 'on' if ep in ('site.about','site.campus','site.people') }}" href="{{ url_for('site.about') }}">About</a>
+        <div class="drop">
+          <a href="{{ url_for('site.about') }}">Our story <span class="ar">قصتنا</span></a>
+          <a href="{{ url_for('site.campus') }}">Our campus <span class="ar">مدرستنا</span></a>
+          <a href="{{ url_for('site.people') }}">Our people <span class="ar">أساتذتنا</span></a>
+          <a href="{{ url_for('site.testimonials') }}">Testimonials <span class="ar">آراء</span></a>
+        </div></div>
+      <div><a class="nav-a {{ 'on' if ep in ('site.curriculum','site.students') }}" href="{{ url_for('site.curriculum') }}">Learning</a>
+        <div class="drop">
+          <a href="{{ url_for('site.curriculum') }}">Curriculum <span class="ar">المنهج</span></a>
+          <a href="{{ url_for('site.students') }}">Our students <span class="ar">طلابنا</span></a>
+          <a href="{{ url_for('site.yearbooks') }}">Year books & works <span class="ar">الكتاب السنوي</span></a>
+        </div></div>
+      <div><a class="nav-a {{ 'on' if ep in ('site.gallery','site.album','site.videos','site.audios','site.newsletters','site.newsletter') }}" href="{{ url_for('site.gallery') }}">Media</a>
+        <div class="drop">
+          <a href="{{ url_for('site.gallery') }}">Photo gallery <span class="ar">الصور</span></a>
+          <a href="{{ url_for('site.videos') }}">Videos <span class="ar">المرئيات</span></a>
+          <a href="{{ url_for('site.audios') }}">Audio stories <span class="ar">الحكايات</span></a>
+          <a href="{{ url_for('site.newsletters') }}">Newsletters <span class="ar">النشرة</span></a>
+        </div></div>
+      <div><a class="nav-a {{ 'on' if ep in ('site.events','site.announcements') }}" href="{{ url_for('site.events') }}">Calendar</a>
+        <div class="drop">
+          <a href="{{ url_for('site.events') }}">Events & happenings <span class="ar">المناسبات</span></a>
+          <a href="{{ url_for('site.announcements') }}">Announcements <span class="ar">الإعلانات</span></a>
+        </div></div>
+      <div><a class="nav-a {{ 'on' if ep.startswith('site.admissions') or ep=='site.track' }}" href="{{ url_for('site.admissions') }}">Admissions</a></div>
+      <div><a class="nav-a {{ 'on' if ep=='site.contact' }}" href="{{ url_for('site.contact') }}">Visit</a></div>
+    </nav>
+    <div class="hdr-act">
+      <button class="search-pill" data-cmdk aria-label="Search"><svg width="15" height="15"><use href="#search"/></svg><span>Search</span><span class="kbd">⌘K</span></button>
+      <button class="icon-btn" data-look aria-label="Colour theme and night mode"><svg><use href="#i-look"/></svg></button>
+      <a class="icon-btn" href="{{ url_for('portal.home') }}" aria-label="Family portal"><svg><use href="#user"/></svg></a>
+      <button class="icon-btn" data-menu aria-label="Open menu"><svg><use href="#menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="sheet" id="sheet" aria-hidden="true">
+  <div class="sheet-top">
+    <a class="brand" href="{{ url_for('site.home') }}"><img src="{{ logo_mark }}" alt=""><span class="brand-t"><b>Rawdat al-Quran</b><span class="ar" style="color:var(--gold-2)">روضة القرآن الكريم</span></span></a>
+    <button class="icon-btn" data-menu aria-label="Close menu" style="border-color:rgba(243,236,218,.3)"><svg><use href="#close"/></svg></button>
+  </div>
+  <div class="sheet-grid">
+    {% set menu_groups = [
+      ('Discover', [('Home','site.home','الرئيسية'),('About us','site.about','من نحن'),('Our campus','site.campus','مدرستنا'),('Our people','site.people','أساتذتنا'),('Testimonials','site.testimonials','آراء')]),
+      ('Learning & media', [('Curriculum','site.curriculum','المنهج'),('Our students','site.students','طلابنا'),('Gallery','site.gallery','الصور'),('Videos','site.videos','المرئيات'),('Audio stories','site.audios','الحكايات'),('Newsletters','site.newsletters','النشرة'),('Year books','site.yearbooks','الكتاب السنوي')]),
+      ('Families', [('Admissions','site.admissions','القبول'),('Track application','site.track','متابعة الطلب'),('Events','site.events','المناسبات'),('Announcements','site.announcements','الإعلانات'),('Visit & contact','site.contact','زيارة'),('Family portal','portal.home','بوابة الأسرة')]) ] %}
+    {% for g, items in menu_groups %}
+    <div><h4>{{ g }}</h4>
+      {% for t, e, a in items %}<a class="big" href="{{ url_for(e) }}" style="transition-delay:{{ 120 + loop.index*45 + loop.index0*0 }}ms">{{ t }} <span class="ar">{{ a }}</span></a>{% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="sheet-foot">
+    <a class="btn btn-gold btn-sm" href="{{ school.links.fees }}" target="_blank" rel="noopener">Pay fees</a>
+    <a class="btn btn-line btn-sm" style="color:#f3ecda;border-color:rgba(243,236,218,.3)" href="{{ school.links.reports }}" target="_blank" rel="noopener">Reports</a>
+    <a class="btn btn-line btn-sm" style="color:#f3ecda;border-color:rgba(243,236,218,.3)" href="{{ school.links.tahfeez_portal }}" target="_blank" rel="noopener">Tahfeez parent portal</a>
+    <button class="btn btn-line btn-sm" style="color:#f3ecda;border-color:rgba(243,236,218,.3)" data-look>Theme & night</button>
+  </div>
+</div>
+
+<div class="look" id="look" role="dialog" aria-label="Look">
+  <div class="caps muted">Colour theme</div>
+  <div class="dots">{% for k, n, c in themes %}<button class="theme-dot" data-theme-set="{{ k }}" title="{{ n }}" style="background:{{ c }}"></button>{% endfor %}</div>
+  <div class="caps muted" style="margin-bottom:10px">Appearance</div>
+  <div class="seg"><button data-mode-set="light">Day</button><button data-mode-set="auto">Auto</button><button data-mode-set="dark">Night</button></div>
+</div>
+
+<div class="cmdk" id="cmdk" role="dialog" aria-label="Search">
+  <div class="cmdk-box"><input id="cmdk-q" placeholder="Search pages, albums, staff, stories…" autocomplete="off" aria-label="Search"><ul id="cmdk-list"></ul></div>
+</div>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb-top"><span id="lb-title"></span><span><span id="lb-count"></span> &nbsp; <button class="icon-btn" data-lb-close aria-label="Close" style="display:inline-grid;border-color:rgba(243,236,218,.3)"><svg><use href="#close"/></svg></button></span></div>
+  <div class="lb-stage"><button class="lb-nav lb-prev" data-lb-prev aria-label="Previous"><svg width="18" height="18" style="transform:rotate(180deg)"><use href="#chev"/></svg></button><img id="lb-img" alt=""><button class="lb-nav lb-next" data-lb-next aria-label="Next"><svg width="18" height="18"><use href="#chev"/></svg></button></div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+
+<main id="main">{% block main %}{% endblock %}</main>
+
+{% with msgs = get_flashed_messages() %}{% if msgs %}<div class="flash" role="status">{{ msgs[-1] }}</div>{% endif %}{% endwith %}
+
+{% block footer %}
+<div class="frieze" aria-hidden="true"><div class="frieze-track">
+  {% for i in range(2) %}<span>بسم الله الرحمن الرحيم</span><svg><use href="#khatam"/></svg><span>كلمة طيبة كشجرة طيبة أصلها ثابت وفرعها في السماء</span><svg><use href="#khatam"/></svg><span>روضة القرآن الكريم</span><svg><use href="#khatam"/></svg><span>معهد الزهراء · الجامعة السيفية</span><svg><use href="#khatam"/></svg>{% endfor %}
+</div></div>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <div>
+        <img src="{{ logo_crest }}" alt="Rawdat al-Quran al-Kareem crest" style="width:96px;margin-bottom:22px;background:#fbf6ea;padding:10px;border-radius:2px">
+        <div class="wm" role="img" aria-label="روضة القرآن الكريم"></div>
+        <p style="margin:22px 0 6px;font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#f3ecda">Rawdat al-Quran al-Kareem</p>
+        <p style="margin:0;font-size:14px">A programme of {{ school.parent }}</p>
+        <p style="margin:22px 0 0;font-size:14px;line-height:1.7">{{ school.address|join(', ') }}<br><a href="tel:{{ school.phone_href }}" style="display:inline;padding:0">Tel: {{ school.phone }}</a></p>
+      </div>
+      <div><h5>School</h5>
+        <a href="{{ url_for('site.about') }}">About us</a><a href="{{ url_for('site.campus') }}">Our campus</a><a href="{{ url_for('site.people') }}">Our people</a><a href="{{ url_for('site.curriculum') }}">Curriculum</a><a href="{{ url_for('site.students') }}">Our students</a></div>
+      <div><h5>Media</h5>
+        <a href="{{ url_for('site.gallery') }}">Photo gallery</a><a href="{{ url_for('site.videos') }}">Videos</a><a href="{{ url_for('site.audios') }}">Audio stories</a><a href="{{ url_for('site.newsletters') }}">Newsletters</a><a href="{{ url_for('site.yearbooks') }}">Year books</a></div>
+      <div><h5>Families</h5>
+        <a href="{{ url_for('site.admissions') }}">Admissions</a><a href="{{ school.links.fees }}" target="_blank" rel="noopener">Pay fees ↗</a><a href="{{ school.links.reports }}" target="_blank" rel="noopener">Reports ↗</a><a href="{{ school.links.tahfeez_portal }}" target="_blank" rel="noopener">Tahfeez parent portal ↗</a><a href="{{ url_for('portal.login') }}">Family portal</a><a href="{{ school.links.webmail }}" target="_blank" rel="noopener">Staff login ↗</a></div>
+    </div>
+    <div class="ftr-bot">
+      <span>© {{ today.year }} Rawdat al-Quran al-Kareem · <span class="ar" style="font-size:15px">{{ hijri.ar }}</span></span>
+      <span>Mahad al-Zahra · Aljamea-tus-Saifiyah</span>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+<nav class="dock" aria-label="Quick">
+  <a class="dock-item {{ 'on' if ep=='site.home' }}" href="{{ url_for('site.home') }}"><svg><use href="#i-home"/></svg>Home</a>
+  <a class="dock-item {{ 'on' if ep in ('site.curriculum','site.about','site.people','site.campus','site.students') }}" href="{{ url_for('site.curriculum') }}"><svg><use href="#i-learn"/></svg>Learn</a>
+  <a class="dock-item {{ 'on' if ep in ('site.gallery','site.album','site.videos','site.audios','site.newsletters') }}" href="{{ url_for('site.gallery') }}"><svg><use href="#i-media"/></svg>Media</a>
+  <a class="dock-item {{ 'on' if ep in ('site.admissions','site.track') }}" href="{{ url_for('site.admissions') }}"><svg><use href="#i-admit"/></svg>Admit</a>
+  <a class="dock-item {{ 'on' if ep.startswith('portal.') }}" href="{{ url_for('portal.home') }}"><svg><use href="#user"/></svg>Portal</a>
+</nav>
+
+<script>window.RQ={csrf:"{{ csrf_token() }}",searchUrl:"{{ url_for('api.search_index') }}",nowUrl:"{{ url_for('api.now') }}",eligUrl:"{{ url_for('api.eligibility') }}"};</script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

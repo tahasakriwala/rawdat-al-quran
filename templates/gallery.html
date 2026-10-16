@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Photo gallery{% endblock %}
+{% block main %}
+{{ phero('Photo gallery', 'Life at <b>Rawdat.</b>', 'الصور', albums|length ~ ' albums of trips, khidmat, workshops, competitions and celebrations.') }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap">
+    <div class="filters" data-filter-group="#albums" style="margin-bottom:36px">
+      <button class="chip on" data-filter="*">All</button>
+      {% for c in cats %}<button class="chip" data-filter="{{ c }}">{{ c }}</button>{% endfor %}
+      {% for y in years %}<button class="chip gold" data-filter="{{ y }}">{{ y }}</button>{% endfor %}
+    </div>
+    <div class="grid g4" id="albums">
+      {% for a in albums %}
+      <a class="album-card" href="{{ url_for('site.album', slug=a.slug) }}" data-tags="{{ a.category }}|{{ a.date[:4] }}" data-reveal style="--d:{{ loop.index0 % 4 }}">
+        <div class="archw"><div class="arch"><img src="{{ a.cover|media }}" alt="{{ a.title }}" loading="lazy"></div></div>
+        <div class="meta"><span class="caps" style="color:var(--gold-deep)">{{ a.category }}</span> <span class="caps muted">· {{ a.images|length }} photos</span></div>
+        <h3>{{ a.title }}</h3>
+        <span class="muted small">{{ a.date|nicedate('%B %Y') }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

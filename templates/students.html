@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% from 'partials/macros.html' import phero %}
+{% block title %}Our students{% endblock %}
+{% block main %}
+{{ phero('Our students', 'Blossoming into<br><b>lovely flowers.</b>', 'طلابنا', 'Every class carries an Arabic name, from al-Tamheedi to al-Taseah.') }}
+<section style="padding-bottom:clamp(72px,10vw,140px)">
+  <div class="wrap">
+    <div class="filters" data-filter-group="#wall" style="margin-bottom:34px;position:sticky;top:calc(var(--hdr-h) + 8px);z-index:5;background:var(--paper);padding:10px 0">
+      <button class="chip on" data-filter="*">All</button>
+      {% for slug, kids in groups.items() if slug != 'archive' %}<button class="chip" data-filter="{{ slug }}">{{ class_by_slug[slug].label }} <span class="ar" style="font-size:14px">{{ class_by_slug[slug].ar }}</span></button>{% endfor %}
+      {% if groups.archive %}<button class="chip" data-filter="archive">Archive</button>{% endif %}
+    </div>
+    <div id="wall">
+      {% for slug, kids in groups.items() %}
+      <div data-tags="{{ slug }}" style="margin-bottom:64px">
+        <div style="display:flex;align-items:baseline;gap:16px;border-bottom:1px solid var(--line-2);padding-bottom:12px;margin-bottom:26px">
+          {% if slug == 'archive' %}<h2 class="h3">From the archive</h2>{% else %}
+          <h2 class="h3">{{ class_by_slug[slug].label }}</h2><span class="ar" style="font-size:24px;color:var(--gold-deep)">{{ class_by_slug[slug].ar }}</span><span class="caps muted" style="margin-left:auto">{{ class_by_slug[slug].name }} · {{ kids|length }}</span>{% endif %}
+        </div>
+        <div class="grid g6" data-lb-group="{{ class_by_slug[slug].label if slug != 'archive' else 'Archive' }}">
+          {% for k in kids %}<a class="stud" href="{{ k.photo|media }}" data-lb data-reveal="fade"><div class="archw"><div class="arch"><img src="{{ k.photo|media }}" alt="{{ k.name }}" loading="lazy"></div></div><h5>{{ k.name }}</h5></a>{% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

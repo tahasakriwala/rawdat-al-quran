@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Offline{% endblock %}
+{% block main %}
+<section class="phero" style="min-height:70vh;display:grid;align-items:center;text-align:center">
+  <div class="wrap">
+    <img src="{{ url_for('static', filename='img/crest.png') }}" alt="" style="width:90px;margin:0 auto 26px">
+    <h1 class="h1">You’re <b>offline.</b></h1>
+    <p class="lead" style="margin:18px auto 0">Pages you have opened before are still available. Reconnect to see the rest.</p>
+  </div>
+</section>
+{% endblock %}

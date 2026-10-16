@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}{{ c.name }} · Hifz journey{% endblock %}
+{% block main %}
+<div style="height:var(--hdr-h)"></div>
+{% include 'portal/_bar.html' %}
+{% set cls = class_by_slug[c.class_slug] %}
+<section class="sec-tight" style="padding-top:clamp(28px,4vw,48px)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <div>
+        <div class="kick">{{ cls.label }} · {{ cls.name }}</div>
+        <h1 class="h1" style="margin-top:14px">{{ c.name }}</h1>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        {% for s in siblings %}<a class="chip" href="{{ url_for('portal.child', cid=s.id) }}">Switch to {{ s.name }}</a>{% endfor %}
+        <a class="chip" href="{{ links.reports }}" target="_blank" rel="noopener">Report card ↗</a>
+        <a class="chip gold" href="{{ links.fees }}" target="_blank" rel="noopener">Pay fees ↗</a>
+      </div>
+    </div>
+
+    <div class="dash">
+      {# --- Hifz ring --- #}
+      <div class="card span-4" style="display:grid;align-content:center;text-align:center">
+        <div class="caps muted">Hifz al-Quran</div>
+        {% set r = 92 %}{% set circ = 2 * 3.14159 * r %}
+        <div class="ring" style="margin:18px auto"><svg viewBox="0 0 210 210"><circle cx="105" cy="105" r="{{ r }}" fill="none" stroke="var(--line)" stroke-width="7"/>
+          <circle cx="105" cy="105" r="{{ r }}" fill="none" stroke="url(#ringg)" stroke-width="7" stroke-linecap="round" stroke-dasharray="{{ circ }}" stroke-dashoffset="{{ circ * (1 - h.pct/100) }}" style="transition:stroke-dashoffset 2s var(--ease)"/>
+          <defs><linearGradient id="ringg"><stop offset="0" stop-color="#b8892b"/><stop offset="1" stop-color="rgb(var(--e-500))"/></linearGradient></defs></svg>
+          <div class="c"><div><div class="num" style="font-size:52px">{{ h.pct }}<span style="font-size:22px">%</span></div><div class="caps muted" style="font-size:9px;margin-top:6px">{{ h.pages }} of 604 pages</div></div></div>
+        </div>
+        <div class="ar" style="font-size:20px;color:var(--gold-deep);text-align:center">{{ h.juz_complete|ardigits }} أجزاء مكتملة</div>
+      </div>
+
+      {# --- stats --- #}
+      <div class="span-8 grid g2" style="gap:18px">
+        <div class="card stat"><div class="v">{{ h.juz_complete }}<span class="muted" style="font-size:.4em"> / 30</span></div><div class="l">Juz complete</div></div>
+        <div class="card stat"><div class="v gold-text">{{ h.streak }}</div><div class="l">Day tasmee’ streak</div></div>
+        <div class="card stat"><div class="v">{{ h.per_week }}</div><div class="l">New pages / week (last 4 weeks)</div></div>
+        <div class="card stat"><div class="v" style="font-size:clamp(26px,2.6vw,36px)">{{ h.eta.strftime('%b %Y') if h.eta else '—' }}</div><div class="l">Projected khatm at this pace</div></div>
+      </div>
+
+      {# --- Mushaf map --- #}
+      <div class="card span-7">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <div><div class="caps muted">Mushaf map</div><h2 class="h3" style="margin-top:6px">30 ajzaa, read right to left</h2></div>
+          <div class="legend"><span><i style="background:var(--accent)"></i>Complete</span><span><i style="background:color-mix(in srgb,var(--accent) 30%,transparent)"></i>In progress</span><span><i style="background:var(--gold);border-radius:50%"></i>Revised this week</span></div>
+        </div>
+        <div class="mushaf" style="margin-top:20px">
+          {% for j in h.juz %}
+          <div class="juz {{ 'full' if j.complete }}" style="--f:{{ j.done / j.total }}" title="Juz {{ j.n }} · {{ j.done }}/{{ j.total }} pages{% if j.last_dhor %} · revised {{ j.last_dhor }}{% endif %}">
+            {% if j.last_dhor and (today - j.last_dhor).days < 7 %}<span class="dot"></span>{% endif %}<span>{{ j.n|ardigits }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="caps muted" style="margin:24px 0 10px">Every page</div>
+        <div class="pages">{% for p in range(1, 605) %}<i class="{{ 'm' if p in h.memorised }}" title="Page {{ p }}"></i>{% endfor %}</div>
+      </div>
+
+      {# --- Murajaah queue --- #}
+      <div class="card span-5">
+        <div class="caps muted">Murajaah · revise next</div>
+        <h2 class="h3" style="margin:6px 0 16px">Longest since last revision</h2>
+        {% for j in h.queue %}
+        <div class="log-row" style="grid-template-columns:54px 1fr auto">
+          <span class="ar" style="font-size:24px;color:var(--gold-deep)">{{ j.n|ardigits }}</span>
+          <div><b>Juz {{ j.n }}</b><div class="bar" style="margin-top:8px;--w:{{ j.pct }}%"><i></i></div></div>
+          <span class="small {{ '' if j.days_since is not none and j.days_since < 14 else 'muted' }}">{{ (j.days_since ~ ' days') if j.days_since is not none else 'not yet' }}</span>
+        </div>
+        {% else %}<p class="muted">Revision suggestions appear after the first sabaq.</p>{% endfor %}
+        <p class="muted small" style="margin-top:14px">Spaced revision keeps older ajzaa strong. This list puts the juz revised longest ago first.</p>
+      </div>
+
+      {# --- recent tasmee' --- #}
+      <div class="card span-7">
+        <div class="caps muted">Recent tasmee’</div>
+        <h2 class="h3" style="margin:6px 0 10px">What was recited</h2>
+        {% for l in h.recent %}
+        <div class="log-row">
+          <span class="small muted">{{ l.day|nicedate('%a %-d %b') }}</span>
+          <div><span class="kind {{ l.kind }}">{{ {'sabaq':'Sabaq','sabaq_para':'Sabaq para','dhor':'Dhor'}[l.kind] }}</span>
+            &nbsp; Juz {{ juz_for_page(l.page_from) }} · pages {{ l.page_from }}–{{ l.page_to }}</div>
+          <span class="small">{{ l.grade or '' }}{% if l.mistakes %} · <span class="muted">{{ l.mistakes }} mistake{{ 's' if l.mistakes > 1 }}</span>{% endif %}</span>
+        </div>
+        {% else %}<p class="muted">No recitations logged yet.</p>{% endfor %}
+      </div>
+
+      {# --- attendance --- #}
+      <div class="card span-5">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><div class="caps muted">Attendance · 12 weeks</div><b class="gold-text" style="font-size:28px;font-weight:300">{{ att_pct }}%</b></div>
+        <div class="attn" style="margin-top:18px">
+          {% for _ in range(days[0].weekday()) %}<i class="sun"></i>{% endfor %}
+          {% for d in days %}{% set s = att.get(d.isoformat()) %}<i class="{{ s or ('sun' if d.weekday() == 6 else '') }}" title="{{ d.strftime('%a %-d %b') }}{{ ' · ' ~ {'P':'Present','A':'Absent','L':'Leave'}[s] if s }}"></i>{% endfor %}
+        </div>
+        <div class="legend" style="margin-top:14px"><span><i style="background:var(--accent)"></i>Present</span><span><i style="background:#b4483f"></i>Absent</span><span><i style="background:var(--gold)"></i>Leave</span></div>
+
+        <details class="drawer" id="leave" style="margin-top:22px;border-top:1px solid var(--line);padding-top:16px">
+          <summary class="link-arrow">Request leave <svg><use href="#arrow"/></svg></summary>
+          <form class="form" method="post" action="{{ url_for('portal.leave', cid=c.id) }}" style="margin-top:16px">
+            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <div class="grid g2"><div class="field"><label>From</label><input type="date" name="from_day" required></div><div class="field"><label>To</label><input type="date" name="to_day" required></div></div>
+            <div class="field"><label>Reason</label><input name="reason" required maxlength="500"></div>
+            <button class="btn btn-sm">Send to class teacher</button>
+          </form>
+          {% for l in leaves %}<div class="log-row" style="grid-template-columns:1fr auto"><span class="small">{{ l.from_day|nicedate('%-d %b') }} – {{ l.to_day|nicedate('%-d %b') }} · {{ l.reason }}</span><span class="tag">{{ l.status }}</span></div>{% endfor %}
+        </details>
+      </div>
+
+      {# --- messages --- #}
+      <div class="card span-7" id="messages">
+        <div class="caps muted">Class teacher</div>
+        <h2 class="h3" style="margin:6px 0 16px">Messages</h2>
+        <div class="thread">
+          {% for m in msgs %}<div class="bubble {{ 'me' if m.sender_id == user.id }}"><small>{{ m.sender }} · {{ m.created|nicedate('%-d %b, %H:%M') }}</small>{{ m.body }}</div>{% else %}<p class="muted">No messages yet.</p>{% endfor %}
+        </div>
+        <form method="post" action="{{ url_for('portal.message', cid=c.id) }}" style="display:flex;gap:8px;margin-top:16px">
+          <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+          <div class="field" style="flex:1"><input name="body" placeholder="Write to the class teacher…" aria-label="Message" required maxlength="2000"></div>
+          <button class="btn">Send</button>
+        </form>
+      </div>
+
+      {# --- announcements & newsletter --- #}
+      <div class="card span-5">
+        <div class="caps muted">For {{ cls.label }}</div>
+        <h2 class="h3" style="margin:6px 0 10px">Announcements</h2>
+        {% for a in ann %}<div style="padding:12px 0;border-bottom:1px solid var(--line)"><b style="font-weight:600">{{ a.title }}</b>{% if a.pinned %} <span class="tag">Pinned</span>{% endif %}<p class="small muted" style="margin:4px 0 0">{{ a.body|truncate(140) }}</p></div>{% endfor %}
+        <a class="link-arrow" style="margin-top:16px" href="{{ url_for('site.announcements', **{'class': c.class_slug}) }}">All announcements <svg><use href="#arrow"/></svg></a>
+        <div class="caps muted" style="margin:26px 0 12px">Latest newsletter</div>
+        <a href="{{ url_for('site.newsletter', slug=newsletters[0].slug) }}" style="display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:center"><img src="{{ newsletters[0].pages[0]|media }}" alt="" style="border:1px solid var(--line-2)"><span><b>{{ newsletters[0].title }}</b><br><span class="small muted">Read now</span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
