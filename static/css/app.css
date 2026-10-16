@@ -586,6 +586,7 @@ details.drawer summary::-webkit-details-marker { display: none; }
 .ftr a { display: block; padding: 5px 0; font-size: 14px; transition: color .25s; }
 .ftr a:hover { color: var(--gold-2); }
 .ftr .wm { width: min(360px, 100%); aspect-ratio: 2175/450; background: var(--gold-leaf); background-size: 200% 100%; -webkit-mask: var(--wm) left center/contain no-repeat; mask: var(--wm) left center/contain no-repeat; animation: leaf 12s linear infinite; }
+.ftr-bot .credit { color: rgba(243,236,218,.75); } .ftr-bot .credit b { color: var(--gold-2); font-weight: 600; }
 .ftr-bot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px 0 30px; border-top: 1px solid rgba(243,236,218,.14); font-size: 12px; color: rgba(243,236,218,.55); }
 @media (max-width: 900px) { .ftr-top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .ftr-top { grid-template-columns: 1fr; } }

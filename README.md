@@ -1,5 +1,7 @@
 # Rawdat al-Quran al-Kareem — website, PWA & family portal
 
+Designed and built by **Taha Sakriwala** · © 2026 Taha Sakriwala (code & design).
+
 A Flask site for Rawdat al-Quran al-Kareem (Mahad al-Zahra · Aljamea-tus-Saifiyah), built on the
 **Jaguar Type 01** look from the Anjuman-e-Saifee app (Inter, spaced capitals, hairlines, flat paper, one
 accent colour, six colour themes, night mode) plus a Fatemi layer: keel arches, ivory marble paper, gold leaf,
